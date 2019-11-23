@@ -143,10 +143,10 @@ osKernelInitialize();
 void StartDefaultTask(void *argument)
 {
   /* init code for LWIP */
-  MX_LWIP_Init();
+  //MX_LWIP_Init();
 
   /* init code for USB_DEVICE */
-  MX_USB_DEVICE_Init();
+  //MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   for(;;)
@@ -169,7 +169,8 @@ void StartSpeedRegTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	F_GPIO_ToogleLedRed();
+    osDelay(1000);
   }
   /* USER CODE END StartSpeedRegTask */
 }
@@ -187,7 +188,7 @@ void StartPositionRegTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(20);
   }
   /* USER CODE END StartPositionRegTask */
 }
@@ -205,7 +206,7 @@ void StartTimerGameTask(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(500);
   }
   /* USER CODE END StartTimerGameTask */
 }

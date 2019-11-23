@@ -1,5 +1,5 @@
 freertos.c:75:6:MX_FREERTOS_Init	152	static
 freertos.c:143:6:StartDefaultTask	16	static
 freertos.c:166:6:StartSpeedRegTask	16	static
-freertos.c:184:6:StartPositionRegTask	16	static
-freertos.c:202:6:StartTimerGameTask	16	static
+freertos.c:185:6:StartPositionRegTask	16	static
+freertos.c:203:6:StartTimerGameTask	16	static

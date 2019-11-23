@@ -45,6 +45,7 @@ Core/Src/syscalls.o: ../Core/Src/syscalls.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
+ ../Core/Inc/gpio.h ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
  ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
@@ -143,6 +144,10 @@ Core/Src/syscalls.o: ../Core/Src/syscalls.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
+
+../Core/Inc/gpio.h:
+
+../Core/Inc/main.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
 

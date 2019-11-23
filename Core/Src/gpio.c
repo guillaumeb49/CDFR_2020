@@ -96,7 +96,13 @@ void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 2 */
-
+void F_GPIO_ToogleLedRed(void){
+	if((GPIOB->ODR & LED_Red) > 0){
+		GPIOB->ODR &= ~LED_Red;
+	}else{
+		GPIOB->ODR |= LED_Red;
+	}
+}
 /* USER CODE END 2 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

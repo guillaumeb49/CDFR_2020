@@ -46,6 +46,7 @@ Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
+ ../Core/Inc/gpio.h ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
  ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
@@ -177,6 +178,10 @@ Middlewares/Third_Party/LwIP/src/apps/mqtt/mqtt.o: \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h:
+
+../Core/Inc/gpio.h:
+
+../Core/Inc/main.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
 

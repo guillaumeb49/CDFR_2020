@@ -32,13 +32,13 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-
+#define LED_Red		GPIO_ODR_ODR_14
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
-
+void F_GPIO_ToogleLedRed(void);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
