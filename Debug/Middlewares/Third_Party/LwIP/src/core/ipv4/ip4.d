@@ -74,7 +74,6 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/igmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcp_priv.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/tcp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h \
@@ -232,8 +231,6 @@ Middlewares/Third_Party/LwIP/src/core/ipv4/ip4.o: \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcp_priv.h:
 

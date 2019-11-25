@@ -48,24 +48,40 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-osThreadId_t defaultTaskHandle;
-osThreadId_t SpeedRegTaskHandle;
-osThreadId_t PositionRegTaskHandle;
-osThreadId_t TimerGameTaskHandle;
+osThreadId defaultTaskHandle;
+osThreadId SpeedRegTaskHandle;
+osThreadId PositionRegTaskHandle;
+osThreadId TimerGameTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
    
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void *argument);
-void StartSpeedRegTask(void *argument);
-void StartPositionRegTask(void *argument);
-void StartTimerGameTask(void *argument);
+void StartDefaultTask(void const * argument);
+void StartSpeedRegTask(void const * argument);
+void StartPositionRegTask(void const * argument);
+void StartTimerGameTask(void const * argument);
 
 extern void MX_LWIP_Init(void);
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+
+/* GetIdleTaskMemory prototype (linked to static allocation support) */
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize );
+
+/* USER CODE BEGIN GET_IDLE_TASK_MEMORY */
+static StaticTask_t xIdleTaskTCBBuffer;
+static StackType_t xIdleStack[configMINIMAL_STACK_SIZE];
+  
+void vApplicationGetIdleTaskMemory( StaticTask_t **ppxIdleTaskTCBBuffer, StackType_t **ppxIdleTaskStackBuffer, uint32_t *pulIdleTaskStackSize )
+{
+  *ppxIdleTaskTCBBuffer = &xIdleTaskTCBBuffer;
+  *ppxIdleTaskStackBuffer = &xIdleStack[0];
+  *pulIdleTaskStackSize = configMINIMAL_STACK_SIZE;
+  /* place for user code */
+}                   
+/* USER CODE END GET_IDLE_TASK_MEMORY */
 
 /**
   * @brief  FreeRTOS initialization
@@ -76,7 +92,6 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
        
   /* USER CODE END Init */
-osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -96,36 +111,20 @@ osKernelInitialize();
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  const osThreadAttr_t defaultTask_attributes = {
-    .name = "defaultTask",
-    .priority = (osPriority_t) osPriorityNormal,
-    .stack_size = 128
-  };
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of SpeedRegTask */
-  const osThreadAttr_t SpeedRegTask_attributes = {
-    .name = "SpeedRegTask",
-    .priority = (osPriority_t) osPriorityRealtime,
-    .stack_size = 128
-  };
-  SpeedRegTaskHandle = osThreadNew(StartSpeedRegTask, NULL, &SpeedRegTask_attributes);
+  osThreadDef(SpeedRegTask, StartSpeedRegTask, osPriorityRealtime, 0, 128);
+  SpeedRegTaskHandle = osThreadCreate(osThread(SpeedRegTask), NULL);
 
   /* definition and creation of PositionRegTask */
-  const osThreadAttr_t PositionRegTask_attributes = {
-    .name = "PositionRegTask",
-    .priority = (osPriority_t) osPriorityRealtime1,
-    .stack_size = 128
-  };
-  PositionRegTaskHandle = osThreadNew(StartPositionRegTask, NULL, &PositionRegTask_attributes);
+  osThreadDef(PositionRegTask, StartPositionRegTask, osPriorityRealtime, 0, 128);
+  PositionRegTaskHandle = osThreadCreate(osThread(PositionRegTask), NULL);
 
   /* definition and creation of TimerGameTask */
-  const osThreadAttr_t TimerGameTask_attributes = {
-    .name = "TimerGameTask",
-    .priority = (osPriority_t) osPriorityNormal,
-    .stack_size = 128
-  };
-  TimerGameTaskHandle = osThreadNew(StartTimerGameTask, NULL, &TimerGameTask_attributes);
+  osThreadDef(TimerGameTask, StartTimerGameTask, osPriorityNormal, 0, 128);
+  TimerGameTaskHandle = osThreadCreate(osThread(TimerGameTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -140,13 +139,13 @@ osKernelInitialize();
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void *argument)
+void StartDefaultTask(void const * argument)
 {
   /* init code for LWIP */
-  //MX_LWIP_Init();
+  MX_LWIP_Init();
 
   /* init code for USB_DEVICE */
-  //MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
   for(;;)
@@ -163,7 +162,7 @@ void StartDefaultTask(void *argument)
 * @retval None
 */
 /* USER CODE END Header_StartSpeedRegTask */
-void StartSpeedRegTask(void *argument)
+void StartSpeedRegTask(void const * argument)
 {
   /* USER CODE BEGIN StartSpeedRegTask */
   /* Infinite loop */
@@ -182,7 +181,7 @@ void StartSpeedRegTask(void *argument)
 * @retval None
 */
 /* USER CODE END Header_StartPositionRegTask */
-void StartPositionRegTask(void *argument)
+void StartPositionRegTask(void const * argument)
 {
   /* USER CODE BEGIN StartPositionRegTask */
   /* Infinite loop */
@@ -200,7 +199,7 @@ void StartPositionRegTask(void *argument)
 * @retval None
 */
 /* USER CODE END Header_StartTimerGameTask */
-void StartTimerGameTask(void *argument)
+void StartTimerGameTask(void const * argument)
 {
   /* USER CODE BEGIN StartTimerGameTask */
   /* Infinite loop */

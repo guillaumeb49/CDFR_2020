@@ -73,7 +73,6 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/igmp.h \
@@ -82,8 +81,7 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/etharp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
  ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -91,8 +89,16 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/portmacro.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
- ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
+ ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
 
@@ -244,8 +250,6 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
 
-../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
-
 ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h:
@@ -262,9 +266,7 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
 
 ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
 
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h:
-
-../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h:
+../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -280,6 +282,22 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h:
 
-../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 
-../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h:
+../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
+
+../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
