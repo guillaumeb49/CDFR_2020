@@ -97,7 +97,7 @@ int main(void)
   MX_I2C1_Init();
   MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
-
+  // Test
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
