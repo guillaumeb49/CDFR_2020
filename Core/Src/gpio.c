@@ -259,6 +259,44 @@ void F_GPIO_ToogleLedRed(void){
 		GPIOB->ODR |= LED_Red;
 	}
 }
+void F_GPIO_PrintCode(int from0to31){
+	// TODO
+}
+void F_GPIO_SetLed1(int boul){
+	if(boul != 0){
+		GPIOB->ODR &= ~LED_1_Pin;
+	}else{
+		GPIOB->ODR |= LED_1_Pin;
+	}
+}
+void F_GPIO_SetLed2(int boul){
+	if(boul != 0){
+		GPIOE->ODR &= ~LED_2_Pin;
+	}else{
+		GPIOE->ODR |= LED_2_Pin;
+	}
+}
+void F_GPIO_SetLed3(int boul){
+	if(boul != 0){
+		GPIOA->ODR &= ~LED_3_Pin;
+	}else{
+		GPIOA->ODR |= LED_3_Pin;
+	}
+}
+void F_GPIO_SetLed4(int boul){
+	if(boul != 0){
+		GPIOE->ODR &= ~LED_4_Pin;
+	}else{
+		GPIOE->ODR |= LED_4_Pin;
+	}
+}
+void F_GPIO_SetLed5(int boul){
+	if(boul != 0){
+		GPIOD->ODR &= ~LED_4_Pin;
+	}else{
+		GPIOD->ODR |= LED_4_Pin;
+	}
+}
 /* USER CODE END 2 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

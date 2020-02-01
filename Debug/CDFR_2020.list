@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000301e4  2**0
                   CONTENTS, READONLY
- 12 .debug_info   000427d5  00000000  00000000  00030214  2**0
+ 12 .debug_info   000428d8  00000000  00000000  00030214  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00008962  00000000  00000000  000729e9  2**0
+ 13 .debug_abbrev 000089b4  00000000  00000000  00072aec  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 000024d0  00000000  00000000  0007b350  2**3
+ 14 .debug_aranges 00002500  00000000  00000000  0007b4a0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000021d8  00000000  00000000  0007d820  2**3
+ 15 .debug_ranges 00002208  00000000  00000000  0007d9a0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00039130  00000000  00000000  0007f9f8  2**0
+ 16 .debug_macro  00039130  00000000  00000000  0007fba8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000306e7  00000000  00000000  000b8b28  2**0
+ 17 .debug_line   00030765  00000000  00000000  000b8cd8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    0010ab1d  00000000  00000000  000e920f  2**0
+ 18 .debug_str    0010abb6  00000000  00000000  000e943d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  001f3d2c  2**0
+ 19 .comment      0000007b  00000000  00000000  001f3ff3  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00009a60  00000000  00000000  001f3da8  2**2
+ 20 .debug_frame  00009b4c  00000000  00000000  001f4070  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1714,8 +1714,8 @@ int main(void)
 {
  8000d6c:	b580      	push	{r7, lr}
  8000d6e:	af00      	add	r7, sp, #0
+  /* USER CODE END 1 */
   
-
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -2838,99 +2838,45 @@ void MX_USART3_UART_Init(void)
  8001308:	40004800 	.word	0x40004800
 
 0800130c <Reset_Handler>:
-
-    .section  .text.Reset_Handler
-  .weak  Reset_Handler
-  .type  Reset_Handler, %function
-Reset_Handler: 
-  ldr   sp, =_estack       /* set stack pointer */
  800130c:	f8df d034 	ldr.w	sp, [pc, #52]	; 8001344 <LoopFillZerobss+0x14>
- 
-/* Copy the data segment initializers from flash to SRAM */  
-  movs  r1, #0
  8001310:	2100      	movs	r1, #0
-  b  LoopCopyDataInit
  8001312:	e003      	b.n	800131c <LoopCopyDataInit>
 
 08001314 <CopyDataInit>:
-
-CopyDataInit:
-  ldr  r3, =_sidata
  8001314:	4b0c      	ldr	r3, [pc, #48]	; (8001348 <LoopFillZerobss+0x18>)
-  ldr  r3, [r3, r1]
  8001316:	585b      	ldr	r3, [r3, r1]
-  str  r3, [r0, r1]
  8001318:	5043      	str	r3, [r0, r1]
-  adds  r1, r1, #4
  800131a:	3104      	adds	r1, #4
 
 0800131c <LoopCopyDataInit>:
-    
-LoopCopyDataInit:
-  ldr  r0, =_sdata
  800131c:	480b      	ldr	r0, [pc, #44]	; (800134c <LoopFillZerobss+0x1c>)
-  ldr  r3, =_edata
  800131e:	4b0c      	ldr	r3, [pc, #48]	; (8001350 <LoopFillZerobss+0x20>)
-  adds  r2, r0, r1
  8001320:	1842      	adds	r2, r0, r1
-  cmp  r2, r3
  8001322:	429a      	cmp	r2, r3
-  bcc  CopyDataInit
  8001324:	d3f6      	bcc.n	8001314 <CopyDataInit>
-  ldr  r2, =_sbss
  8001326:	4a0b      	ldr	r2, [pc, #44]	; (8001354 <LoopFillZerobss+0x24>)
-  b  LoopFillZerobss
  8001328:	e002      	b.n	8001330 <LoopFillZerobss>
 
 0800132a <FillZerobss>:
-/* Zero fill the bss segment. */  
-FillZerobss:
-  movs  r3, #0
  800132a:	2300      	movs	r3, #0
-  str  r3, [r2], #4
  800132c:	f842 3b04 	str.w	r3, [r2], #4
 
 08001330 <LoopFillZerobss>:
-    
-LoopFillZerobss:
-  ldr  r3, = _ebss
  8001330:	4b09      	ldr	r3, [pc, #36]	; (8001358 <LoopFillZerobss+0x28>)
-  cmp  r2, r3
  8001332:	429a      	cmp	r2, r3
-  bcc  FillZerobss
  8001334:	d3f9      	bcc.n	800132a <FillZerobss>
-
-/* Call the clock system intitialization function.*/
-  bl  SystemInit   
  8001336:	f7ff ff0b 	bl	8001150 <SystemInit>
-/* Call static constructors */
-    bl __libc_init_array
  800133a:	f013 fc6f 	bl	8014c1c <__libc_init_array>
-/* Call the application's entry point.*/
-  bl  main
  800133e:	f7ff fd15 	bl	8000d6c <main>
-  bx  lr    
  8001342:	4770      	bx	lr
-  ldr   sp, =_estack       /* set stack pointer */
  8001344:	20030000 	.word	0x20030000
-  ldr  r3, =_sidata
  8001348:	08017abc 	.word	0x08017abc
-  ldr  r0, =_sdata
  800134c:	20000000 	.word	0x20000000
-  ldr  r3, =_edata
  8001350:	200001e4 	.word	0x200001e4
-  ldr  r2, =_sbss
  8001354:	200001e4 	.word	0x200001e4
-  ldr  r3, = _ebss
  8001358:	2000c418 	.word	0x2000c418
 
 0800135c <ADC_IRQHandler>:
- * @retval None       
-*/
-    .section  .text.Default_Handler,"ax",%progbits
-Default_Handler:
-Infinite_Loop:
-  b  Infinite_Loop
  800135c:	e7fe      	b.n	800135c <ADC_IRQHandler>
 	...
 

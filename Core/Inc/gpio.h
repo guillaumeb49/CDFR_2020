@@ -39,6 +39,12 @@ void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 void F_GPIO_ToogleLedRed(void);
+void F_GPIO_PrintCode(int from0to31);
+void F_GPIO_SetLed1(int boul);
+void F_GPIO_SetLed2(int boul);
+void F_GPIO_SetLed3(int boul);
+void F_GPIO_SetLed4(int boul);
+void F_GPIO_SetLed5(int boul);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
