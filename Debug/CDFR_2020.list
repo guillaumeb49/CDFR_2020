@@ -518,7 +518,7 @@ void MX_FREERTOS_Init(void) {
  800063a:	601a      	str	r2, [r3, #0]
 
   /* definition and creation of SensorsTask */
-  osThreadDef(SensorsTask, StartSensorsTask, osPriorityAboveNormal, 0, 256);
+  osThreadDef(SensorsTask, StartSensorsTask, osPriorityNormal, 0, 256);
  800063c:	4b10      	ldr	r3, [pc, #64]	; (8000680 <MX_FREERTOS_Init+0xbc>)
  800063e:	463c      	mov	r4, r7
  8000640:	461d      	mov	r5, r3

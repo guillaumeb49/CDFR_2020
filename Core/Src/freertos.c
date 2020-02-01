@@ -123,7 +123,7 @@ void MX_FREERTOS_Init(void) {
   OdometryRegTaskHandle = osThreadCreate(osThread(OdometryRegTask), NULL);
 
   /* definition and creation of SensorsTask */
-  osThreadDef(SensorsTask, StartSensorsTask, osPriorityAboveNormal, 0, 256);
+  osThreadDef(SensorsTask, StartSensorsTask, osPriorityNormal, 0, 256);
   SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
