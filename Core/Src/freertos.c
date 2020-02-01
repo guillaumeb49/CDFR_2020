@@ -49,9 +49,9 @@
 
 /* USER CODE END Variables */
 osThreadId defaultTaskHandle;
-osThreadId SpeedRegTaskHandle;
-osThreadId PositionRegTaskHandle;
-osThreadId TimerGameTaskHandle;
+osThreadId MotionRegTaskHandle;
+osThreadId OdometryRegTaskHandle;
+osThreadId SensorsTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -59,9 +59,9 @@ osThreadId TimerGameTaskHandle;
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void const * argument);
-void StartSpeedRegTask(void const * argument);
-void StartPositionRegTask(void const * argument);
-void StartTimerGameTask(void const * argument);
+void StartMotionRegTask(void const * argument);
+void StartOdometryRegTask(void const * argument);
+void StartSensorsTask(void const * argument);
 
 extern void MX_LWIP_Init(void);
 extern void MX_USB_DEVICE_Init(void);
@@ -111,20 +111,20 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  /* definition and creation of SpeedRegTask */
-  osThreadDef(SpeedRegTask, StartSpeedRegTask, osPriorityRealtime, 0, 128);
-  SpeedRegTaskHandle = osThreadCreate(osThread(SpeedRegTask), NULL);
+  /* definition and creation of MotionRegTask */
+  osThreadDef(MotionRegTask, StartMotionRegTask, osPriorityHigh, 0, 256);
+  MotionRegTaskHandle = osThreadCreate(osThread(MotionRegTask), NULL);
 
-  /* definition and creation of PositionRegTask */
-  osThreadDef(PositionRegTask, StartPositionRegTask, osPriorityRealtime, 0, 128);
-  PositionRegTaskHandle = osThreadCreate(osThread(PositionRegTask), NULL);
+  /* definition and creation of OdometryRegTask */
+  osThreadDef(OdometryRegTask, StartOdometryRegTask, osPriorityRealtime, 0, 256);
+  OdometryRegTaskHandle = osThreadCreate(osThread(OdometryRegTask), NULL);
 
-  /* definition and creation of TimerGameTask */
-  osThreadDef(TimerGameTask, StartTimerGameTask, osPriorityNormal, 0, 128);
-  TimerGameTaskHandle = osThreadCreate(osThread(TimerGameTask), NULL);
+  /* definition and creation of SensorsTask */
+  osThreadDef(SensorsTask, StartSensorsTask, osPriorityAboveNormal, 0, 256);
+  SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -155,59 +155,58 @@ void StartDefaultTask(void const * argument)
   /* USER CODE END StartDefaultTask */
 }
 
-/* USER CODE BEGIN Header_StartSpeedRegTask */
+/* USER CODE BEGIN Header_StartMotionRegTask */
 /**
-* @brief Function implementing the SpeedRegTask thread.
+* @brief Function implementing the MotionRegTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartSpeedRegTask */
-void StartSpeedRegTask(void const * argument)
+/* USER CODE END Header_StartMotionRegTask */
+void StartMotionRegTask(void const * argument)
 {
-  /* USER CODE BEGIN StartSpeedRegTask */
+  /* USER CODE BEGIN StartMotionRegTask */
   /* Infinite loop */
   for(;;)
   {
-	F_GPIO_ToogleLedRed();
-    osDelay(1000);
+    osDelay(1);
   }
-  /* USER CODE END StartSpeedRegTask */
+  /* USER CODE END StartMotionRegTask */
 }
 
-/* USER CODE BEGIN Header_StartPositionRegTask */
+/* USER CODE BEGIN Header_StartOdometryRegTask */
 /**
-* @brief Function implementing the PositionRegTask thread.
+* @brief Function implementing the OdometryRegTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartPositionRegTask */
-void StartPositionRegTask(void const * argument)
+/* USER CODE END Header_StartOdometryRegTask */
+void StartOdometryRegTask(void const * argument)
 {
-  /* USER CODE BEGIN StartPositionRegTask */
+  /* USER CODE BEGIN StartOdometryRegTask */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(20);
+    osDelay(1);
   }
-  /* USER CODE END StartPositionRegTask */
+  /* USER CODE END StartOdometryRegTask */
 }
 
-/* USER CODE BEGIN Header_StartTimerGameTask */
+/* USER CODE BEGIN Header_StartSensorsTask */
 /**
-* @brief Function implementing the TimerGameTask thread.
+* @brief Function implementing the SensorsTask thread.
 * @param argument: Not used
 * @retval None
 */
-/* USER CODE END Header_StartTimerGameTask */
-void StartTimerGameTask(void const * argument)
+/* USER CODE END Header_StartSensorsTask */
+void StartSensorsTask(void const * argument)
 {
-  /* USER CODE BEGIN StartTimerGameTask */
+  /* USER CODE BEGIN StartSensorsTask */
   /* Infinite loop */
   for(;;)
   {
-    osDelay(500);
+    osDelay(1);
   }
-  /* USER CODE END StartTimerGameTask */
+  /* USER CODE END StartSensorsTask */
 }
 
 /* Private application code --------------------------------------------------*/
