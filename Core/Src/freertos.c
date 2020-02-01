@@ -52,6 +52,7 @@ osThreadId defaultTaskHandle;
 osThreadId MotionRegTaskHandle;
 osThreadId OdometryRegTaskHandle;
 osThreadId SensorsTaskHandle;
+osThreadId DebugTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -62,6 +63,7 @@ void StartDefaultTask(void const * argument);
 void StartMotionRegTask(void const * argument);
 void StartOdometryRegTask(void const * argument);
 void StartSensorsTask(void const * argument);
+void StartDebugTask(void const * argument);
 
 extern void MX_LWIP_Init(void);
 extern void MX_USB_DEVICE_Init(void);
@@ -125,6 +127,10 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of SensorsTask */
   osThreadDef(SensorsTask, StartSensorsTask, osPriorityNormal, 0, 256);
   SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
+
+  /* definition and creation of DebugTask */
+  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 256);
+  DebugTaskHandle = osThreadCreate(osThread(DebugTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -207,6 +213,24 @@ void StartSensorsTask(void const * argument)
     osDelay(1);
   }
   /* USER CODE END StartSensorsTask */
+}
+
+/* USER CODE BEGIN Header_StartDebugTask */
+/**
+* @brief Function implementing the DebugTask thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_StartDebugTask */
+void StartDebugTask(void const * argument)
+{
+  /* USER CODE BEGIN StartDebugTask */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END StartDebugTask */
 }
 
 /* Private application code --------------------------------------------------*/
