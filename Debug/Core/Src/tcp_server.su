@@ -1,8 +1,0 @@
-tcp_server.c:85:6:tcp_server_init	16	static
-tcp_server.c:120:14:tcp_server_accept	32	static
-tcp_server.c:173:14:tcp_server_recv	96	static
-tcp_server.c:312:13:tcp_server_error	24	static
-tcp_server.c:332:14:tcp_server_poll	24	static
-tcp_server.c:371:14:tcp_server_sent	32	static
-tcp_server.c:400:13:tcp_server_send	32	static
-tcp_server.c:457:13:tcp_server_connection_close	16	static

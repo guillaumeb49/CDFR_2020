@@ -21,8 +21,8 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
+#include "eth.h"
 #include "i2c.h"
-#include "lwip.h"
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
@@ -96,6 +96,7 @@ int main(void)
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
+  MX_ETH_Init();
   /* USER CODE BEGIN 2 */
   /* USER CODE END 2 */
 

@@ -1,0 +1,8 @@
+FreeRTOS_DHCP.c:247:12:xIsDHCPSocket	24	static
+FreeRTOS_DHCP.c:264:6:vDHCPProcess	24	static
+FreeRTOS_DHCP.c:556:13:prvCreateDHCPSocket	32	static
+FreeRTOS_DHCP.c:593:13:prvInitialiseDHCP	8	static
+FreeRTOS_DHCP.c:616:19:prvProcessDHCPReplies	80	static
+FreeRTOS_DHCP.c:827:17:prvCreatePartDHCPMessage	40	static
+FreeRTOS_DHCP.c:900:13:prvSendDHCPRequest	32	static
+FreeRTOS_DHCP.c:939:13:prvSendDHCPDiscover	32	static
