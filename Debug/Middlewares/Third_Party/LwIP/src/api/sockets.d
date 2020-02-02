@@ -45,6 +45,10 @@ Middlewares/Third_Party/LwIP/src/api/sockets.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
  ../Core/Inc/gpio.h ../Core/Inc/main.h \
+ /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
+ /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
+ /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
+ ../Core/Inc/F_VL53L1X.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
  ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
@@ -97,6 +101,7 @@ Middlewares/Third_Party/LwIP/src/api/sockets.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h
@@ -194,6 +199,14 @@ Middlewares/Third_Party/LwIP/src/api/sockets.o: \
 ../Core/Inc/gpio.h:
 
 ../Core/Inc/main.h:
+
+/home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h:
+
+/home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h:
+
+/home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h:
+
+../Core/Inc/F_VL53L1X.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
 
@@ -298,6 +311,8 @@ Middlewares/Third_Party/LwIP/src/api/sockets.o: \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h:
 

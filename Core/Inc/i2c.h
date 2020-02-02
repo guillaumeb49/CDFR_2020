@@ -31,7 +31,9 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-
+#define I2C_TIMEOUT 	100000
+#define I2C_STATUS_OK  	0
+#define I2C_STATUS_KO 	1
 /* USER CODE END Private defines */
 
 void MX_I2C1_Init(void);

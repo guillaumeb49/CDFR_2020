@@ -27,6 +27,8 @@ RM := rm -rf
 -include LWIP/Target/subdir.mk
 -include LWIP/App/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/API_VL53L1_ULD/platform/subdir.mk
+-include Drivers/API_VL53L1_ULD/core/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include subdir.mk
@@ -55,8 +57,8 @@ CDFR_2020.list \
 all: CDFR_2020.elf secondary-outputs
 
 # Tool invocations
-CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
