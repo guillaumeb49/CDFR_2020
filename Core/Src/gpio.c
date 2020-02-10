@@ -39,20 +39,12 @@
      PE11   ------> S_TIM1_CH2
      PE13   ------> S_TIM1_CH3
      PE14   ------> S_TIM1_CH4
-     PD14   ------> S_TIM4_CH3
-     PD15   ------> S_TIM4_CH4
      PC6   ------> S_TIM8_CH1
      PC7   ------> S_TIM8_CH2
      PC8   ------> S_TIM8_CH3
      PC9   ------> S_TIM8_CH4
-     PA15   ------> S_TIM2_CH1_ETR
-     PC10   ------> UART4_TX
-     PC11   ------> UART4_RX
      PG9   ------> USART6_RX
      PG14   ------> USART6_TX
-     PB3   ------> S_TIM2_CH2
-     PB4   ------> S_TIM3_CH1
-     PB5   ------> S_TIM3_CH2
 */
 void MX_GPIO_Init(void)
 {
@@ -174,14 +166,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(LED_5_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PDPin PDPin */
-  GPIO_InitStruct.Pin = CMD_MOTEUR_DROIT_Pin|CMD_MOTEUR_GAUCHE_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF2_TIM4;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
-
   /*Configure GPIO pins : PGPin PGPin */
   GPIO_InitStruct.Pin = USB_PowerSwitchOn_Pin|XSHUNT_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -197,22 +181,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF3_TIM8;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = QEI_M1_CH1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
-  HAL_GPIO_Init(QEI_M1_CH1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PC10 PC11 */
-  GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
-  GPIO_InitStruct.Alternate = GPIO_AF8_UART4;
-  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
-
   /*Configure GPIO pins : PDPin PDPin PDPin PDPin */
   GPIO_InitStruct.Pin = CONTACT_5_Pin|CONTACT_1_Pin|CONTACT_2_Pin|CONTACT_3_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
@@ -226,22 +194,6 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   GPIO_InitStruct.Alternate = GPIO_AF8_USART6;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : PtPin */
-  GPIO_InitStruct.Pin = QEI_M1_CH2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF1_TIM2;
-  HAL_GPIO_Init(QEI_M1_CH2_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PBPin PBPin */
-  GPIO_InitStruct.Pin = QEI_M2_CH1_Pin|QEI_M2_CH2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.Alternate = GPIO_AF2_TIM3;
-  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = CONTACT_6_Pin;
@@ -264,38 +216,87 @@ void F_GPIO_PrintCode(int from0to31){
 }
 void F_GPIO_SetLed1(int boul){
 	if(boul != 0){
-		GPIOB->ODR &= ~LED_1_Pin;
+		LED_1_GPIO_Port->ODR &= ~LED_1_Pin;
 	}else{
-		GPIOB->ODR |= LED_1_Pin;
+		LED_1_GPIO_Port->ODR |= LED_1_Pin;
+	}
+}
+void F_GPIO_ToogleLed1(void){
+	if((LED_1_GPIO_Port->ODR & LED_1_Pin) > 0){
+		LED_1_GPIO_Port->ODR &= ~LED_1_Pin;
+	}else{
+		LED_1_GPIO_Port->ODR |= LED_1_Pin;
 	}
 }
 void F_GPIO_SetLed2(int boul){
 	if(boul != 0){
-		GPIOE->ODR &= ~LED_2_Pin;
+		LED_4_GPIO_Port->ODR &= ~LED_4_Pin;
 	}else{
-		GPIOE->ODR |= LED_2_Pin;
+		LED_4_GPIO_Port->ODR |= LED_4_Pin;
+	}
+}
+void F_GPIO_ToogleLed2(void){
+	if((LED_4_GPIO_Port->ODR & LED_4_Pin) > 0){
+		LED_4_GPIO_Port->ODR &= ~LED_4_Pin;
+	}else{
+		LED_4_GPIO_Port->ODR |= LED_4_Pin;
 	}
 }
 void F_GPIO_SetLed3(int boul){
 	if(boul != 0){
-		GPIOA->ODR &= ~LED_3_Pin;
+		LED_3_GPIO_Port->ODR &= ~LED_3_Pin;
 	}else{
-		GPIOA->ODR |= LED_3_Pin;
+		LED_3_GPIO_Port->ODR |= LED_3_Pin;
+	}
+}
+void F_GPIO_ToogleLed3(void){
+	if((LED_3_GPIO_Port->ODR & LED_3_Pin) > 0){
+		LED_3_GPIO_Port->ODR &= ~LED_3_Pin;
+	}else{
+		LED_3_GPIO_Port->ODR |= LED_3_Pin;
 	}
 }
 void F_GPIO_SetLed4(int boul){
 	if(boul != 0){
-		GPIOE->ODR &= ~LED_4_Pin;
+		LED_5_GPIO_Port->ODR &= ~LED_5_Pin;
 	}else{
-		GPIOE->ODR |= LED_4_Pin;
+		LED_5_GPIO_Port->ODR |= LED_5_Pin;
+	}
+}
+void F_GPIO_ToogleLed4(void){
+	if((LED_5_GPIO_Port->ODR & LED_5_Pin) > 0){
+		LED_5_GPIO_Port->ODR &= ~LED_5_Pin;
+	}else{
+		LED_5_GPIO_Port->ODR |= LED_5_Pin;
 	}
 }
 void F_GPIO_SetLed5(int boul){
 	if(boul != 0){
-		GPIOD->ODR &= ~LED_4_Pin;
+		LED_2_GPIO_Port->ODR &= ~LED_2_Pin;
 	}else{
-		GPIOD->ODR |= LED_4_Pin;
+		LED_2_GPIO_Port->ODR |= LED_2_Pin;
 	}
+}
+void F_GPIO_ToogleLed5(void){
+	if((LED_2_GPIO_Port->ODR & LED_2_Pin) > 0){
+		LED_2_GPIO_Port->ODR &= ~LED_2_Pin;
+	}else{
+		LED_2_GPIO_Port->ODR |= LED_2_Pin;
+	}
+}
+void F_GPIO_SetMotorDroitDir(int dir){
+	// PF 12
+	(dir<0) ? (M1_DIR_GPIO_Port->ODR |= M1_DIR_Pin) : (M1_DIR_GPIO_Port->ODR &= ~M1_DIR_Pin) ;
+}
+
+void F_GPIO_SetMotorGaucheDir(int dir){
+	// PF 13
+	(dir<0) ? (M2_DIR_GPIO_Port->ODR |= M2_DIR_Pin) : (M1_DIR_GPIO_Port->ODR &= ~M2_DIR_Pin) ;
+}
+
+void F_GPIO_SetEnableMotors(int state){
+	// PF 14
+	(state) ? (ENABLE_MOTORS_GPIO_Port->ODR |= ENABLE_MOTORS_Pin) : (ENABLE_MOTORS_GPIO_Port->ODR &= ~ENABLE_MOTORS_Pin) ;
 }
 /* USER CODE END 2 */
 

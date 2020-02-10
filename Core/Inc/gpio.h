@@ -45,6 +45,14 @@ void F_GPIO_SetLed2(int boul);
 void F_GPIO_SetLed3(int boul);
 void F_GPIO_SetLed4(int boul);
 void F_GPIO_SetLed5(int boul);
+void F_GPIO_ToogleLed1(void);
+void F_GPIO_ToogleLed2(void);
+void F_GPIO_ToogleLed3(void);
+void F_GPIO_ToogleLed4(void);
+void F_GPIO_ToogleLed5(void);
+void F_GPIO_SetEnableMotors(int);
+void F_GPIO_SetMotorDroitDir(int);
+void F_GPIO_SetMotorGaucheDir(int);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

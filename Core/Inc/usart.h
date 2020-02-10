@@ -30,10 +30,14 @@
 
 /* USER CODE END Includes */
 
-/* USER CODE BEGIN Private defines */
+extern UART_HandleTypeDef huart4;
 
+/* USER CODE BEGIN Private defines */
+void F_UART_Send(char *);
+void F_UART_DebugTask_Handler(void const * argument);
 /* USER CODE END Private defines */
 
+void MX_UART4_Init(void);
 void MX_USART3_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */

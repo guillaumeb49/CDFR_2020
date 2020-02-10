@@ -23,13 +23,15 @@
 #include "cmsis_os.h"
 #include "i2c.h"
 #include "lwip.h"
+#include "tim.h"
 #include "usart.h"
 #include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "D_Moteur.h"
+#include "F_LCD.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,8 +98,13 @@ int main(void)
   MX_USART3_UART_Init();
   MX_I2C1_Init();
   MX_I2C2_Init();
+  MX_TIM4_Init();
+  MX_UART4_Init();
+  MX_TIM2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  // Test
+  //Init_Motors();
+  LL_I2C_Enable(I2C1);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

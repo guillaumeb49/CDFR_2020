@@ -1,0 +1,5 @@
+D_Moteur.c:14:6:Init_Motors	8	static
+D_Moteur.c:27:6:F_PWM_SetCmdMotorDroit	24	static
+D_Moteur.c:45:6:F_PWM_SetCmdMotorGauche	24	static
+D_Moteur.c:65:6:F_PWM_SetDCMotorDroit	16	static
+D_Moteur.c:73:6:F_PWM_SetDCMotorGauche	16	static

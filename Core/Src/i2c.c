@@ -47,6 +47,12 @@ void MX_I2C1_Init(void)
   /* Peripheral clock enable */
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
 
+  /* I2C1 interrupt Init */
+  NVIC_SetPriority(I2C1_EV_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C1_EV_IRQn);
+  NVIC_SetPriority(I2C1_ER_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(),5, 0));
+  NVIC_EnableIRQ(I2C1_ER_IRQn);
+
   /** I2C Initialization 
   */
   LL_I2C_DisableOwnAddress2(I2C1);
@@ -107,6 +113,50 @@ void MX_I2C2_Init(void)
 
 /* USER CODE BEGIN 1 */
 
+/**
+ * Write a single value in a slave register
+ */
+int F_I2C1_WriteValue(uint8_t slave_addr, uint8_t value){
+
+	__disable_irq();
+
+	int i2c_status = I2C_STATUS_OK;
+	uint32_t timeout = 0;
+//	uint16_t i = 0;
+
+	// Send start
+	I2C1->CR1 |= I2C_CR1_START; // send START bit
+	while (!(I2C1->SR1 & I2C_SR1_SB)){	// wait for START condition (SB=1)
+		if(timeout > I2C_TIMEOUT){
+			//printf("Erreur : Start Condition \n");
+			return I2C_STATUS_KO;
+		}
+	timeout++;
+	}
+	timeout=0;
+	// Send slave address
+	I2C1->DR = (slave_addr<<1) & 0xFE  ;	// address + write
+	while (!(I2C1->SR1 & I2C_SR1_ADDR)){// wait for ADDRESS sent (ADDR=1)
+		if(timeout > I2C_TIMEOUT){
+			//printf("Erreur : Send slave address \n");
+			return I2C_STATUS_KO;
+		}
+		timeout++;
+	}
+	timeout=0;
+	i2c_status = I2C1->SR2; // read status to clear flag
+
+	// Send register address
+	I2C1->DR = value;
+	while ((!(I2C1->SR1 & I2C_SR1_TXE)) && (!(I2C1->SR1 & I2C_SR1_BTF))); // wait for DR empty (TxE)
+
+
+	I2C1->CR1 |= I2C_CR1_STOP; // send STOP bit
+
+	__enable_irq();
+
+	return i2c_status;
+}
 /* USER CODE END 1 */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

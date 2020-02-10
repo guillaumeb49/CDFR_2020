@@ -26,7 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */     
-
+#include "F_Odometry.h"
+#include "F_LCD.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -174,7 +176,8 @@ void StartMotionRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(200);
+    F_GPIO_ToogleLed2();
   }
   /* USER CODE END StartMotionRegTask */
 }
@@ -189,10 +192,11 @@ void StartMotionRegTask(void const * argument)
 void StartOdometryRegTask(void const * argument)
 {
   /* USER CODE BEGIN StartOdometryRegTask */
+	F_Odometry_RegTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(100);
   }
   /* USER CODE END StartOdometryRegTask */
 }
@@ -225,6 +229,8 @@ void StartSensorsTask(void const * argument)
 void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
+	//F_UART_DebugTask_Handler(argument);
+	F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
