@@ -10,23 +10,19 @@ RM := rm -rf
 -include sources.mk
 -include USB_DEVICE/Target/subdir.mk
 -include USB_DEVICE/App/subdir.mk
--include Middlewares/Third_Party/LwIP/system/OS/subdir.mk
--include Middlewares/Third_Party/LwIP/src/netif/ppp/subdir.mk
--include Middlewares/Third_Party/LwIP/src/netif/subdir.mk
--include Middlewares/Third_Party/LwIP/src/core/ipv6/subdir.mk
--include Middlewares/Third_Party/LwIP/src/core/ipv4/subdir.mk
--include Middlewares/Third_Party/LwIP/src/core/subdir.mk
--include Middlewares/Third_Party/LwIP/src/apps/mqtt/subdir.mk
--include Middlewares/Third_Party/LwIP/src/api/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/CDC/Src/subdir.mk
--include LWIP/Target/subdir.mk
--include LWIP/App/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/subdir.mk
+-include Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/Common/subdir.mk
+-include Drivers/FreeRTOS-Plus-TCP/portable/BufferManagement/subdir.mk
+-include Drivers/FreeRTOS-Plus-TCP/subdir.mk
+-include Drivers/API_VL53L1_ULD/platform/subdir.mk
+-include Drivers/API_VL53L1_ULD/core/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include subdir.mk
@@ -55,8 +51,8 @@ CDFR_2020.list \
 all: CDFR_2020.elf secondary-outputs
 
 # Tool invocations
-CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
