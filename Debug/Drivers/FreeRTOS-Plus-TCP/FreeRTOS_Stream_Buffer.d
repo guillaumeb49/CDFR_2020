@@ -17,8 +17,8 @@ Drivers/FreeRTOS-Plus-TCP/FreeRTOS_Stream_Buffer.o: \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_errno_TCP.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/IPTraceMacroDefaults.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_IP.h \
- ../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h \
- ../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h \
+ ../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h \
+ ../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_Sockets.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
@@ -63,9 +63,9 @@ Drivers/FreeRTOS-Plus-TCP/FreeRTOS_Stream_Buffer.o: \
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_IP.h:
 
-../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h:
+../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h:
 
-../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h:
+../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h:
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_Sockets.h:
 

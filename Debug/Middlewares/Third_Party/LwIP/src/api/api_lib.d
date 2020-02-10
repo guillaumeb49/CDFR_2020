@@ -91,6 +91,7 @@ Middlewares/Third_Party/LwIP/src/api/api_lib.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/ip.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/api_msg.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/igmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h \
@@ -287,6 +288,8 @@ Middlewares/Third_Party/LwIP/src/api/api_lib.o: \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/api_msg.h:
 

@@ -17,8 +17,8 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOSIPConfigDefaults.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_errno_TCP.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/IPTraceMacroDefaults.h \
- ../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h \
- ../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h \
+ ../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h \
+ ../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_Sockets.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
@@ -31,7 +31,7 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_DNS.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/NetworkBufferManagement.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/NetworkInterface.h \
- ../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/include/phyHandling.h \
+ ../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/include/phyHandling.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -65,7 +65,7 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h \
  ../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/stm32f4xx_hal_eth.h \
- ../Core/Inc/../../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h
+ ../LWIP/App/../../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 
@@ -101,9 +101,9 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/IPTraceMacroDefaults.h:
 
-../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h:
+../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_start.h:
 
-../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h:
+../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/Compiler/GCC/pack_struct_end.h:
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/FreeRTOS_Sockets.h:
 
@@ -129,7 +129,7 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/FreeRTOS-Plus-TCP/include/NetworkInterface.h:
 
-../Core/Inc/../../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/include/phyHandling.h:
+../LWIP/App/../../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/include/phyHandling.h:
 
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 
@@ -197,4 +197,4 @@ Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/NetworkInterface.o:
 
 ../Drivers/FreeRTOS-Plus-TCP/portable/NetworkInterface/STM32Fxx/stm32f4xx_hal_eth.h:
 
-../Core/Inc/../../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h:
+../LWIP/App/../../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_eth.h:

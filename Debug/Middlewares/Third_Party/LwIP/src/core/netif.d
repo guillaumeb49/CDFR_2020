@@ -74,6 +74,7 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/icmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/tcp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/igmp.h \
@@ -99,7 +100,8 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h
+ ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
 
@@ -253,6 +255,8 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/udp.h:
 
+../Middlewares/Third_Party/LwIP/src/include/lwip/prot/udp.h:
+
 ../Middlewares/Third_Party/LwIP/src/include/lwip/raw.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/snmp.h:
@@ -304,3 +308,5 @@ Middlewares/Third_Party/LwIP/src/core/netif.o: \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/netif/ethernet.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/dhcp.h:

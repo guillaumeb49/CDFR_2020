@@ -67,6 +67,7 @@ void StartOdometryRegTask(void const * argument);
 void StartSensorsTask(void const * argument);
 void StartDebugTask(void const * argument);
 
+extern void MX_LWIP_Init(void);
 extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -114,23 +115,23 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 256);
+  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of MotionRegTask */
-  osThreadDef(MotionRegTask, StartMotionRegTask, osPriorityHigh, 0, 256);
+  osThreadDef(MotionRegTask, StartMotionRegTask, osPriorityHigh, 0, 128);
   MotionRegTaskHandle = osThreadCreate(osThread(MotionRegTask), NULL);
 
   /* definition and creation of OdometryRegTask */
-  osThreadDef(OdometryRegTask, StartOdometryRegTask, osPriorityRealtime, 0, 256);
+  osThreadDef(OdometryRegTask, StartOdometryRegTask, osPriorityRealtime, 0, 128);
   OdometryRegTaskHandle = osThreadCreate(osThread(OdometryRegTask), NULL);
 
   /* definition and creation of SensorsTask */
-  osThreadDef(SensorsTask, StartSensorsTask, osPriorityNormal, 0, 256);
+  osThreadDef(SensorsTask, StartSensorsTask, osPriorityNormal, 0, 128);
   SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
 
   /* definition and creation of DebugTask */
-  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 256);
+  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 128);
   DebugTaskHandle = osThreadCreate(osThread(DebugTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -148,6 +149,9 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_StartDefaultTask */
 void StartDefaultTask(void const * argument)
 {
+  /* init code for LWIP */
+  MX_LWIP_Init();
+
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
