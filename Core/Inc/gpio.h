@@ -32,12 +32,18 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-#define LED_Red		GPIO_ODR_ODR_14
+#define LED_RED		GPIO_ODR_ODR_14
+#define LED_GREEN	GPIO_ODR_ODR_0
+#define LED_BLUE	GPIO_ODR_ODR_7
 /* USER CODE END Private defines */
 
 void MX_GPIO_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void F_GPIO_setLedRed(uint8_t state);
+void F_GPIO_setLedBlue(uint8_t state);
+void F_GPIO_setLedGreen(uint8_t state);
+
 void F_GPIO_ToogleLedRed(void);
 void F_GPIO_PrintCode(int from0to31);
 void F_GPIO_SetLed1(int boul);

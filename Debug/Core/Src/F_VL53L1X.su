@@ -1,0 +1,2 @@
+F_VL53L1X.c:25:6:F_VL53L1X_InitSensors	16	static,ignoring_inline_asm
+F_VL53L1X.c:118:6:F_VL53L1X_CheckSensors	16	static

@@ -205,12 +205,52 @@ void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 2 */
 void F_GPIO_ToogleLedRed(void){
-	if((GPIOB->ODR & LED_Red) > 0){
-		GPIOB->ODR &= ~LED_Red;
+	if((GPIOB->ODR & LED_RED) > 0){
+		GPIOB->ODR &= ~LED_RED;
 	}else{
-		GPIOB->ODR |= LED_Red;
+		GPIOB->ODR |= LED_RED;
 	}
 }
+
+void F_GPIO_setLedRed(uint8_t state)
+{
+
+	if(state == 1)
+	{
+		GPIOB->ODR |= LED_RED;
+	}
+	else
+	{
+		GPIOB->ODR &= ~LED_RED;
+	}
+}
+
+void F_GPIO_setLedBlue(uint8_t state)
+{
+
+	if(state == 1)
+	{
+		GPIOB->ODR |= LED_BLUE;
+	}
+	else
+	{
+		GPIOB->ODR &= ~LED_BLUE;
+	}
+}
+
+void F_GPIO_setLedGreen(uint8_t state)
+{
+
+	if(state == 1)
+	{
+		GPIOB->ODR |= LED_GREEN;
+	}
+	else
+	{
+		GPIOB->ODR &= ~LED_GREEN;
+	}
+}
+
 void F_GPIO_PrintCode(int from0to31){
 	// TODO
 }

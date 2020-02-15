@@ -104,7 +104,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   //Init_Motors();
-  LL_I2C_Enable(I2C1);
+ // LL_I2C_Enable(I2C1);
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

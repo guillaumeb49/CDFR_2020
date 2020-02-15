@@ -48,12 +48,19 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "stdint.h"
 #include "gpio.h"
-
+#include "VL53L1X_api.h"
+#include "F_VL53L1X.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
+
+#define DUREE_MATCH 100
+#define DISTANCE_WARNING 300
+
+#define mainHOST_NAME				"STM32_Robot"
+#define mainDEVICE_NICK_NAME		"windows_STM32_Robot"
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/

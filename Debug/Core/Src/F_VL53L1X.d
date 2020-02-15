@@ -1,9 +1,5 @@
-Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o: \
- ../Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.c \
- ../Middlewares/Third_Party/LwIP/src/include/netif/ppp/ppp_opts.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
- ../LWIP/Target/lwipopts.h ../Core/Inc/main.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/F_VL53L1X.o: ../Core/Src/F_VL53L1X.c ../Core/Inc/F_VL53L1X.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -46,21 +42,13 @@ Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_exti.h \
- ../Core/Inc/gpio.h ../Core/Inc/main.h \
+ ../Core/Inc/gpio.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
- ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
- ../Middlewares/Third_Party/LwIP/system/arch/cpu.h
+ ../Core/Inc/F_VL53L1X.h
 
-../Middlewares/Third_Party/LwIP/src/include/netif/ppp/ppp_opts.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h:
-
-../LWIP/Target/lwipopts.h:
+../Core/Inc/F_VL53L1X.h:
 
 ../Core/Inc/main.h:
 
@@ -152,8 +140,6 @@ Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o: \
 
 ../Core/Inc/gpio.h:
 
-../Core/Inc/main.h:
-
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h:
 
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h:
@@ -161,11 +147,3 @@ Middlewares/Third_Party/LwIP/src/netif/ppp/ipv6cp.o: \
 /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h:
 
 ../Core/Inc/F_VL53L1X.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/cc.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/cpu.h:
