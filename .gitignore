@@ -1,2 +1,8 @@
 *.o
 *.elf
+*.list
+*.map
+*.su
+*.debug
+*.mk
+*.orig
