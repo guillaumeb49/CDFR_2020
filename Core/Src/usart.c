@@ -166,10 +166,12 @@ void F_UART_DebugTask_Handler(void const * argument){
     while(1){
         // 2. Wait until period elapse
     	osDelay(200);
-    	F_GPIO_ToogleLed4();
+    	F_GPIO_SetLed4(TRUE);	// Flag ON
 
         // 3. Send data
     	F_UART_Send("Zob de pouple !\n\r");
+
+    	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }
 /* USER CODE END 1 */

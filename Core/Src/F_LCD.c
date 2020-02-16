@@ -197,7 +197,7 @@ void F_LCD_printstr(char *c){
 	//This function is not identical to the function used for "real" I2C displays
 	//it's here so the user sketch doesn't have to be changed
 	int idx=0;
-	while (c[idx] !='\0') {
+	while (c[idx] !='\0' && idx<16) {
 		F_LCD_write(c[idx]);
 		idx++;
 	}
@@ -275,7 +275,6 @@ void D_LCD_write4bits(uint8_t value) {
 	D_LCD_pulseEnable(value);
 }
 void D_LCD_expanderWrite(uint8_t a_data){
-
 	F_I2C1_WriteValue(g_addr,a_data | g_backlightval);
 }
 void D_LCD_pulseEnable(uint8_t _data){
@@ -283,7 +282,7 @@ void D_LCD_pulseEnable(uint8_t _data){
 	HAL_Delay(1);		// enable pulse must be >450ns
 
 	D_LCD_expanderWrite(_data & ~LCD_EN);	// En low
-	HAL_Delay(10);		// commands need > 37us to settle
+	//HAL_Delay(1);		// commands need > 37us to settle
 }
 void D_LCD_load_custom_character(uint8_t char_num, uint8_t *rows){
 	F_LCD_createChar(char_num, rows);
@@ -299,7 +298,9 @@ void D_LCD_setBacklight(uint8_t new_val){
 void F_LCD_DebugTask_Handler(void const * argument){
 
 	char line1[16],line2[16];
+	uint32_t OldTick =0;
 
+	// 1. Initialization message
 	sprintf(line1,"Time %s",__TIME__);
 	sprintf(line2,"Date%s",__DATE__);
 
@@ -309,15 +310,29 @@ void F_LCD_DebugTask_Handler(void const * argument){
 	F_LCD_setCursor(0,1);
 	F_LCD_printstr(line2);
 
-	HAL_Delay(100);
+	// 2. Wait 1s and clear Initialization message
+	osDelay(1000);
 	F_LCD_clear();
 
     while(1){
-        // 2. Wait until period elapse
-    	osDelay(500);
-    	F_GPIO_ToogleLed4();
+        // 3. Wait until period elapse
+    	osDelay(300);
+    	F_GPIO_SetLed4(TRUE);	// Flag ON
+    	uint32_t currentTick = osKernelSysTick();
 
-        // 3. Send data
-    	F_LCD_PrintQEI();
+    	// 4. Fit data for printing
+    	sprintf(line1,"t: %d",(int)currentTick);
+    	sprintf(line2,"d: %d",(int)(currentTick-OldTick));
+
+    	// 5. Print on LCD screen
+    	F_LCD_clear();
+    	F_LCD_setCursor(0,0);
+    	F_LCD_printstr(line1);
+    	F_LCD_setCursor(0,1);
+    	F_LCD_printstr(line2);
+
+    	// 6. Set flag to LOW.
+    	OldTick = currentTick;
+    	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }

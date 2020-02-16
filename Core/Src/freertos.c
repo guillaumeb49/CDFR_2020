@@ -150,7 +150,7 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void const * argument)
 {
   /* init code for LWIP */
-  MX_LWIP_Init();
+  //MX_LWIP_Init();
 
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
@@ -160,7 +160,10 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(10);
+    F_GPIO_SetLed5(TRUE);	// Flag ON
+    HAL_Delay(2);
+    F_GPIO_SetLed5(FALSE);	// Flaf OFF
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -178,8 +181,10 @@ void StartMotionRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(200);
-    F_GPIO_ToogleLed2();
+    osDelay(50);
+    F_GPIO_SetLed2(TRUE);	// Flag ON
+    HAL_Delay(1);
+    F_GPIO_SetLed2(FALSE);	// Flaf OFF
   }
   /* USER CODE END StartMotionRegTask */
 }
@@ -198,7 +203,7 @@ void StartOdometryRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(100);
+    osDelay(10);
   }
   /* USER CODE END StartOdometryRegTask */
 }
@@ -216,7 +221,10 @@ void StartSensorsTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(200);
+    F_GPIO_SetLed3(TRUE);	// Flag ON
+    HAL_Delay(30);
+    F_GPIO_SetLed3(FALSE);
   }
   /* USER CODE END StartSensorsTask */
 }
@@ -236,7 +244,10 @@ void StartDebugTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(400);
+//    F_GPIO_SetLed4(TRUE);	// Flag ON
+//    HAL_Delay(30);
+//    F_GPIO_SetLed4(FALSE);
   }
   /* USER CODE END StartDebugTask */
 }

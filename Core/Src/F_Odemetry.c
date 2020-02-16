@@ -38,32 +38,31 @@ void F_Odometry_Compute(uint32_t period_inTick){
 }
 
 void F_Odometry_RegTask_Handler(void const * argument){
-    //TickType_t xLastWakeTime;
-
-    TickType_t prevTick = 0u,  tick = 0u;
+    TickType_t prevTick = 0u;	// Save previous tick
+    TickType_t tick = 0u;		// Current tick
 
     uint32_t period;
 
-    // 1. Initialise periodical task
-    //xLastWakeTime = osKernelSysTick();
+    // 1. Initialize QEI
     F_QEI_Reset();
+
     // 2. Get tick count
     prevTick = osKernelSysTick();
 
     while(1){
         // 2. Wait until period elapse
     	osDelay(ODO_TECH);
-    	F_GPIO_ToogleLed1();
+    	F_GPIO_SetLed1(TRUE);	// Flag On
 
-        // 3. Get tick
+        // 3. Get tick and compute period
         tick = osKernelSysTick();
-
-        period = tick - prevTick; // Attention l'overflow n'est pas géré
+        period = tick - prevTick;
 
         //4. Compute location
         F_Odometry_Compute(period);
 
         // 5. Set previous tick
         prevTick = tick;
+        F_GPIO_SetLed1(FALSE);	// Flag Off
     }
 }
