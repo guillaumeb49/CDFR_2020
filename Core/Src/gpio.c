@@ -255,7 +255,7 @@ void F_GPIO_PrintCode(int from0to31){
 	// TODO
 }
 void F_GPIO_SetLed1(int boul){
-	if(boul != 0){
+	if(boul != TRUE){
 		LED_1_GPIO_Port->ODR &= ~LED_1_Pin;
 	}else{
 		LED_1_GPIO_Port->ODR |= LED_1_Pin;
@@ -269,7 +269,7 @@ void F_GPIO_ToogleLed1(void){
 	}
 }
 void F_GPIO_SetLed2(int boul){
-	if(boul != 0){
+	if(boul != TRUE){
 		LED_4_GPIO_Port->ODR &= ~LED_4_Pin;
 	}else{
 		LED_4_GPIO_Port->ODR |= LED_4_Pin;
@@ -283,7 +283,7 @@ void F_GPIO_ToogleLed2(void){
 	}
 }
 void F_GPIO_SetLed3(int boul){
-	if(boul != 0){
+	if(boul != TRUE){
 		LED_3_GPIO_Port->ODR &= ~LED_3_Pin;
 	}else{
 		LED_3_GPIO_Port->ODR |= LED_3_Pin;
@@ -297,7 +297,7 @@ void F_GPIO_ToogleLed3(void){
 	}
 }
 void F_GPIO_SetLed4(int boul){
-	if(boul != 0){
+	if(boul != TRUE){
 		LED_5_GPIO_Port->ODR &= ~LED_5_Pin;
 	}else{
 		LED_5_GPIO_Port->ODR |= LED_5_Pin;
@@ -311,7 +311,7 @@ void F_GPIO_ToogleLed4(void){
 	}
 }
 void F_GPIO_SetLed5(int boul){
-	if(boul != 0){
+	if(boul != TRUE){
 		LED_2_GPIO_Port->ODR &= ~LED_2_Pin;
 	}else{
 		LED_2_GPIO_Port->ODR |= LED_2_Pin;

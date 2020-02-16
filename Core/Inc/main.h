@@ -208,7 +208,8 @@ void Error_Handler(void);
 #define CONTACT_6_Pin GPIO_PIN_1
 #define CONTACT_6_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
-
+#define TRUE 	0
+#define FALSE 	1
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

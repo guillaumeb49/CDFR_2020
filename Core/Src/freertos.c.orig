@@ -162,10 +162,15 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  F_GPIO_ToogleLedRed();
-    osDelay(500);
+<<<<<<< HEAD
+    osDelay(10);
+    F_GPIO_SetLed5(TRUE);	// Flag ON
     HAL_Delay(2);
     F_GPIO_SetLed5(FALSE);	// Flaf OFF
+=======
+	  F_GPIO_ToogleLedRed();
+    osDelay(500);
+>>>>>>> 34d3151597c7c8f83f9b647f5c2310539319119a
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -223,10 +228,14 @@ void StartSensorsTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+<<<<<<< HEAD
     osDelay(200);
     F_GPIO_SetLed3(TRUE);	// Flag ON
     HAL_Delay(30);
     F_GPIO_SetLed3(FALSE);
+=======
+    osDelay(100);
+>>>>>>> 34d3151597c7c8f83f9b647f5c2310539319119a
   }
   /* USER CODE END StartSensorsTask */
 }
@@ -246,10 +255,14 @@ void StartDebugTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+<<<<<<< HEAD
     osDelay(400);
 //    F_GPIO_SetLed4(TRUE);	// Flag ON
 //    HAL_Delay(30);
 //    F_GPIO_SetLed4(FALSE);
+=======
+    osDelay(500);
+>>>>>>> 34d3151597c7c8f83f9b647f5c2310539319119a
   }
   /* USER CODE END StartDebugTask */
 }
