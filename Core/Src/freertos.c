@@ -29,6 +29,8 @@
 #include "F_Odometry.h"
 #include "F_LCD.h"
 #include "usart.h"
+
+#include "A_com.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -155,13 +157,13 @@ void StartDefaultTask(void const * argument)
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN StartDefaultTask */
-
+  tcpecho_init();
 
   /* Infinite loop */
   for(;;)
   {
-    osDelay(10);
-    F_GPIO_SetLed5(TRUE);	// Flag ON
+	  F_GPIO_ToogleLedRed();
+    osDelay(500);
     HAL_Delay(2);
     F_GPIO_SetLed5(FALSE);	// Flaf OFF
   }
@@ -240,7 +242,7 @@ void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
 	//F_UART_DebugTask_Handler(argument);
-	F_LCD_DebugTask_Handler(argument);
+	//F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
