@@ -21,10 +21,8 @@
 #include <stdio.h>
 #include "math.h"
 #include "cmsis_os.h"
-#include "D_QEI.h"
-
-extern int g_leftCount;
-extern int g_rightCount;
+#include "i2c.h"
+#include "F_Odometry.h"
 
 void F_LCD_Init(void){
 	g_addr = LCD_ADDR;
@@ -32,6 +30,8 @@ void F_LCD_Init(void){
 	g_rows = LCD_ROWS;
 	g_charsize = LCD_CHARSIZE;
 	g_backlightval = LCD_BACKLIGHT;
+
+	LL_I2C_Enable(I2C1);
 
 	F_LCD_begin();
 }
@@ -231,35 +231,6 @@ void F_LCD_printstr(char *c){
 //	F_LCD_printstr(line2);
 //
 //}
-void F_LCD_PrintSpeed(int speedL,int speedR){
-	char line1[16];
-	char line2[16];
-
-	//(teta_deg<0) ? (signe = '-') : (signe = '+');
-
-	sprintf(line1,"LSpid:%4d",speedL);
-	sprintf(line2,"RSpid:%4d",speedR);
-
-	F_LCD_setCursor(0,0);
-	F_LCD_printstr(line1);
-	F_LCD_setCursor(0,1);
-	F_LCD_printstr(line2);
-}
-
-void F_LCD_PrintQEI(void){
-	char line1[16];
-	char line2[16];
-
-	//(teta_deg<0) ? (signe = '-') : (signe = '+');
-
-	sprintf(line1,"Lcnt:%4d",g_leftCount);
-	sprintf(line2,"Rcnt:%4d",g_rightCount);
-
-	F_LCD_setCursor(0,0);
-	F_LCD_printstr(line1);
-	F_LCD_setCursor(0,1);
-	F_LCD_printstr(line2);
-}
 /************ low level data pushing commands **********/
 
 // write either command or data
@@ -297,10 +268,8 @@ void D_LCD_setBacklight(uint8_t new_val){
 
 void F_LCD_DebugTask_Handler(void const * argument){
 
-	char line1[16],line2[16];
-	uint32_t OldTick =0;
-
 	// 1. Initialization message
+	char line1[16],line2[16];
 	sprintf(line1,"Time %s",__TIME__);
 	sprintf(line2,"Date%s",__DATE__);
 
@@ -318,21 +287,11 @@ void F_LCD_DebugTask_Handler(void const * argument){
         // 3. Wait until period elapse
     	osDelay(300);
     	F_GPIO_SetLed4(TRUE);	// Flag ON
-    	uint32_t currentTick = osKernelSysTick();
 
     	// 4. Fit data for printing
-    	sprintf(line1,"t: %d",(int)currentTick);
-    	sprintf(line2,"d: %d",(int)(currentTick-OldTick));
-
-    	// 5. Print on LCD screen
-    	F_LCD_clear();
-    	F_LCD_setCursor(0,0);
-    	F_LCD_printstr(line1);
-    	F_LCD_setCursor(0,1);
-    	F_LCD_printstr(line2);
+    	F_Odometry_printCountersLCD();
 
     	// 6. Set flag to LOW.
-    	OldTick = currentTick;
     	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }

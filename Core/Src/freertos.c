@@ -152,7 +152,7 @@ void MX_FREERTOS_Init(void) {
 void StartDefaultTask(void const * argument)
 {
   /* init code for LWIP */
-  //MX_LWIP_Init();
+  MX_LWIP_Init();
 
   /* init code for USB_DEVICE */
   MX_USB_DEVICE_Init();
@@ -162,8 +162,9 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  F_GPIO_ToogleLedRed();
+	//F_GPIO_ToogleLedRed();
     osDelay(500);
+    F_GPIO_SetLed5(TRUE);	// Flaf OFF
     HAL_Delay(2);
     F_GPIO_SetLed5(FALSE);	// Flaf OFF
   }
@@ -180,6 +181,7 @@ void StartDefaultTask(void const * argument)
 void StartMotionRegTask(void const * argument)
 {
   /* USER CODE BEGIN StartMotionRegTask */
+	//Init_Motors();
   /* Infinite loop */
   for(;;)
   {
@@ -242,7 +244,7 @@ void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
 	//F_UART_DebugTask_Handler(argument);
-	//F_LCD_DebugTask_Handler(argument);
+	F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {

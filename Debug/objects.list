@@ -1,6 +1,5 @@
 "Core/Src/A_com.o"
 "Core/Src/D_Moteur.o"
-"Core/Src/D_QEI.o"
 "Core/Src/F_LCD.o"
 "Core/Src/F_Odemetry.o"
 "Core/Src/F_VL53L1X.o"

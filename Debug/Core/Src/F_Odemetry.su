@@ -1,2 +1,9 @@
-F_Odemetry.c:12:6:F_Odometry_Compute	16	static
-F_Odemetry.c:40:6:F_Odometry_RegTask_Handler	32	static
+F_Odemetry.c:21:6:F_Odometry_Init	8	static
+F_Odemetry.c:31:6:F_Odometry_Reset	8	static
+F_Odemetry.c:51:6:F_Odometry_Read	32	static
+F_Odemetry.c:78:6:F_Odometry_getspeed	24	static
+F_Odemetry.c:87:6:F_Odometry_Compute	24	static
+F_Odemetry.c:96:6:F_Odometry_printEstimatedSpeed	4	static
+F_Odemetry.c:104:6:F_Odometry_printCounters	4	static
+F_Odemetry.c:110:6:F_Odometry_printCountersLCD	40	static
+F_Odemetry.c:124:6:F_Odometry_RegTask_Handler	32	static

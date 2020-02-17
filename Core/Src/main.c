@@ -30,8 +30,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "D_Moteur.h"
-#include "F_LCD.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -103,12 +102,11 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  //Init_Motors();
- // LL_I2C_Enable(I2C1);
+
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */
-  MX_FREERTOS_Init();
+  MX_FREERTOS_Init(); 
 
   /* Start scheduler */
   osKernelStart();
