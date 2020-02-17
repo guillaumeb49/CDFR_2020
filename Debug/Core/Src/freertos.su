@@ -1,7 +1,0 @@
-freertos.c:83:6:vApplicationGetIdleTaskMemory	24	static
-freertos.c:97:6:MX_FREERTOS_Init	160	static
-freertos.c:152:6:StartDefaultTask	16	static
-freertos.c:181:6:StartMotionRegTask	16	static
-freertos.c:203:6:StartOdometryRegTask	16	static
-freertos.c:222:6:StartSensorsTask	16	static
-freertos.c:243:6:StartDebugTask	16	static

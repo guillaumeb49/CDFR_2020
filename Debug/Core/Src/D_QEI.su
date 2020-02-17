@@ -1,7 +1,0 @@
-D_QEI.c:32:6:Init_QEI	8	static
-D_QEI.c:42:6:F_QEI_Reset	8	static
-D_QEI.c:64:6:F_QEI_Read	4	static
-D_QEI.c:100:6:F_QEI_getspeed	16	static
-D_QEI.c:121:6:F_QEI_printEstimatedSpeed	16	static
-D_QEI.c:129:6:F_QEI_printCounters	4	static
-D_QEI.c:135:6:F_QEI_printCountersLCD	40	static
