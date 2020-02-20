@@ -34,6 +34,8 @@ extern UART_HandleTypeDef huart4;
 
 /* USER CODE BEGIN Private defines */
 void F_UART_Send(char *);
+void F_UART_SetReceivedChar(char);
+char F_UART_GetReceivedChar(void);
 void F_UART_DebugTask_Handler(void const * argument);
 /* USER CODE END Private defines */
 

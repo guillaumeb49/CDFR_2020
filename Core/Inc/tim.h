@@ -45,8 +45,8 @@ void MX_TIM4_Init(void);
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                     
 /* USER CODE BEGIN Prototypes */
-void F_TIM4_CH3_SetDC(int dc);
-void F_TIM4_CH4_SetDC(int dc);
+void D_TIM4_CH3_SetDC(int dc);
+void D_TIM4_CH4_SetDC(int dc);
 
 /* USER CODE END Prototypes */
 

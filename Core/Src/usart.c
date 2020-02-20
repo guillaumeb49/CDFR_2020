@@ -23,6 +23,9 @@
 /* USER CODE BEGIN 0 */
 #include "cmsis_os.h"
 #include <stdio.h>
+#include "F_Odometry.h"
+
+char g_uart_buff=':';
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart4;
@@ -156,7 +159,12 @@ void F_UART_Send(char * buff){
 
 	HAL_UART_Transmit(&huart4, buff, ln, HAL_MAX_DELAY);
 }
-
+void F_UART_SetReceivedChar(char c){
+	g_uart_buff=c;
+}
+char F_UART_GetReceivedChar(void){
+	return g_uart_buff;
+}
 void F_UART_DebugTask_Handler(void const * argument){
 
 	char tab[128];
@@ -168,9 +176,8 @@ void F_UART_DebugTask_Handler(void const * argument){
     	osDelay(200);
     	F_GPIO_SetLed4(TRUE);	// Flag ON
 
-        // 3. Send data
-    	F_UART_Send("Zob de pouple !\n\r");
-
+    	// 3. Send data
+    	F_Odometry_printPositionUART();
     	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }

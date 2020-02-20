@@ -55,12 +55,6 @@ extern "C" {
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
 
-
-#define DUREE_MATCH 100
-#define DISTANCE_WARNING 300
-
-#define mainHOST_NAME				"STM32_Robot"
-#define mainDEVICE_NICK_NAME		"windows_STM32_Robot"
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -208,6 +202,12 @@ void Error_Handler(void);
 #define CONTACT_6_Pin GPIO_PIN_1
 #define CONTACT_6_GPIO_Port GPIOE
 /* USER CODE BEGIN Private defines */
+#define DUREE_MATCH 100
+#define DISTANCE_WARNING 300
+
+#define mainHOST_NAME				"STM32_Robot"
+#define mainDEVICE_NICK_NAME		"windows_STM32_Robot"
+
 #define TRUE 	0
 #define FALSE 	1
 /* USER CODE END Private defines */

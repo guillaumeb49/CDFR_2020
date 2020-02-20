@@ -309,12 +309,12 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 } 
 
 /* USER CODE BEGIN 1 */
-void F_TIM4_CH3_SetDC(int dc){
+void D_TIM4_CH3_SetDC(int dc){
 	if(dc>100) dc=100;
 	if(dc<0) dc=0;
 	htim4.Instance->CCR3 = (htim4.Instance->ARR*dc)/100;
 }
-void F_TIM4_CH4_SetDC(int dc){
+void D_TIM4_CH4_SetDC(int dc){
 	if(dc>100) dc=100;
 	if(dc<0) dc=0;
 	htim4.Instance->CCR4 = (htim4.Instance->ARR*dc)/100;

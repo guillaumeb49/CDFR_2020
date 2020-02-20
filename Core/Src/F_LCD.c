@@ -289,7 +289,7 @@ void F_LCD_DebugTask_Handler(void const * argument){
     	F_GPIO_SetLed4(TRUE);	// Flag ON
 
     	// 4. Fit data for printing
-    	F_Odometry_printCountersLCD();
+    	F_Odometry_printPositionLCD();
 
     	// 6. Set flag to LOW.
     	F_GPIO_SetLed4(FALSE);	// Flag OFF

@@ -27,6 +27,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */     
 #include "F_Odometry.h"
+#include "F_Motion.h"
 #include "F_LCD.h"
 #include "usart.h"
 
@@ -181,14 +182,11 @@ void StartDefaultTask(void const * argument)
 void StartMotionRegTask(void const * argument)
 {
   /* USER CODE BEGIN StartMotionRegTask */
-	//Init_Motors();
+	F_Motion_RegTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(50);
-    F_GPIO_SetLed2(TRUE);	// Flag ON
-    HAL_Delay(1);
-    F_GPIO_SetLed2(FALSE);	// Flaf OFF
+    osDelay(100);
   }
   /* USER CODE END StartMotionRegTask */
 }
@@ -243,15 +241,12 @@ void StartSensorsTask(void const * argument)
 void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
-	//F_UART_DebugTask_Handler(argument);
-	F_LCD_DebugTask_Handler(argument);
+	F_UART_DebugTask_Handler(argument);
+	//F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
     osDelay(400);
-//    F_GPIO_SetLed4(TRUE);	// Flag ON
-//    HAL_Delay(30);
-//    F_GPIO_SetLed4(FALSE);
   }
   /* USER CODE END StartDebugTask */
 }

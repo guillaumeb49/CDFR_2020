@@ -24,52 +24,36 @@ void Init_Motors(void){
  * Pour faire l'automatique c'est obligatoire
  *
  */
-void F_PWM_SetCmdMotorDroit(int speed){
+void D_Motor_SetCmdMotorDroit(int relativeDC){
 	int dir=0;
 	// Bornage de la donnée d'entrée
-	if(speed<-100) speed= -100;
-	if(speed> 100) speed=  100;
+	if(relativeDC<-100) relativeDC= -100;
+	if(relativeDC> 100) relativeDC=  100;
 
 	// Commande du pont en H
-	if(speed < 0){
+	if(relativeDC < 0){
 		dir = -1;
 	}else{
 		dir = 1;
 	}
 	F_GPIO_SetMotorDroitDir(dir);
-	F_PWM_SetDCMotorDroit(speed*dir);
+	D_TIM4_CH4_SetDC(relativeDC*dir);
 }
 /**
  *	@param[in] new_pwm_value new Duty cycle value in percentage %
  */
-void F_PWM_SetCmdMotorGauche(int speed){
+void D_Motor_SetCmdMotorGauche(int relativeDC){
 	int dir=0;
 	// Bornage de la donnée d'entrée
-	if(speed<-100) speed= -100;
-	if(speed> 100) speed=  100;
+	if(relativeDC<-100) relativeDC= -100;
+	if(relativeDC> 100) relativeDC=  100;
 
 	// Commande du pont en H
-	if(speed < 0){
+	if(relativeDC < 0){
 		(dir = -1);
 	}else{
 		(dir = 1);
 	}
 	F_GPIO_SetMotorGaucheDir(dir);
-	F_PWM_SetDCMotorGauche(speed*dir);
-}
-/**
- *	@param[in] new_pwm_value new Duty cycle value in percentage %
- *
- *	Validé sur NUCLEO F429 ZI le 18-09-2018
- */
-void F_PWM_SetDCMotorDroit(int dc){
-	F_TIM4_CH3_SetDC(dc);
-}
-/**
- *	@param[in] new_pwm_value new Duty cycle value in percentage %
- *
- *	Validé sur NUCLEO F429 ZI le 18-09-2018
- */
-void F_PWM_SetDCMotorGauche(int dc){
-	F_TIM4_CH4_SetDC(dc);
+	D_TIM4_CH3_SetDC(relativeDC*dir);
 }

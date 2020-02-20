@@ -11,9 +11,7 @@
 #include "main.h"
 
 void Init_Motors(void);
-void F_PWM_SetCmdMotorDroit(int speed);
-void F_PWM_SetCmdMotorGauche(int speed);
-void F_PWM_SetDCMotorDroit(int dc);
-void F_PWM_SetDCMotorGauche(int dc);
+void D_Motor_SetCmdMotorDroit(int relativeDC);
+void D_Motor_SetCmdMotorGauche(int relativeDC);
 
 #endif /* INC_D_MOTEUR_H_ */

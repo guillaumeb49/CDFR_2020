@@ -64,8 +64,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- ../Core/Inc/F_Odometry.h ../Core/Inc/F_LCD.h ../Core/Inc/i2c.h \
- ../Core/Inc/usart.h ../Core/Inc/A_com.h \
+ ../Core/Inc/F_Odometry.h ../Core/Inc/F_Motion.h ../Core/Inc/F_LCD.h \
+ ../Core/Inc/i2c.h ../Core/Inc/usart.h ../Core/Inc/A_com.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
  ../LWIP/Target/lwipopts.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
@@ -219,6 +219,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 
 ../Core/Inc/F_Odometry.h:
+
+../Core/Inc/F_Motion.h:
 
 ../Core/Inc/F_LCD.h:
 
