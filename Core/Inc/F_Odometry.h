@@ -25,19 +25,26 @@
 struct localisation {
 	float x_tick;
 	float y_tick;
-	float x_mm;
-	float y_mm;
 	float teta;
 };
 typedef struct localisation Localisation;
 
-void F_Odometry_Compute(uint32_t period_inTick);
+struct dynamicState {
+	float fwrdSpeed_mmPerSec;
+	float rotSpeed_degPerSec;
+	float leftSpeed_mmPerSec;
+	float rightSpeed_mmPerSec;
+};
+typedef struct dynamicState DynamicState;
+
+void F_Odometry_Compute(uint32_t period_ms);
 void F_Odometry_RegTask_Handler(void const * argument);
 
 void F_Odometry_Init(void);
 void F_Odometry_Reset(void);
-void F_Odometry_Read(float *fwrdProgress_tick, float *rotProgress_tick);
-void F_Odometry_getspeed(float * leftSpeed, float * rightSpeed);
+void F_Odometry_Read(float *leftDelta, float * rightDelta);
+void F_Odometry_getWheelSpeed(float * leftSpeed_mmPerSec, float * rightSpeed_mmPerSec);
+void F_Odometry_getPolarspeed(float * fwrdSpeed_mmPerSec, float * rotSpeed_degPerSec);
 void F_Odometry_getLocalisation(int * x_mm, int * y_mm, int *teta_deg);
 void F_Odometry_printEstimatedSpeed(void);
 void F_Odometry_printCountersUART(void);

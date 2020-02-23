@@ -178,6 +178,7 @@ void F_UART_DebugTask_Handler(void const * argument){
 
     	// 3. Send data
     	F_Odometry_printPositionUART();
+    	//F_Odometry_printEstimatedSpeed();
     	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }

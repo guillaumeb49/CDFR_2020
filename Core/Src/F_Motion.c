@@ -17,31 +17,29 @@
 /*
  * F_Motion_MotorSpeedRegulator - Manual command
  */
-void F_Motion_MotorsSpeedRegulator(int a_leftSpeed_mmPerSec,int a_rightSpeed_mmPerSec){
-	float l_leftSpeed;	// Left  wheel speed
-	float l_rightSpeed;	// Right wheel speed
-	float l_errLeft;	// Left	 speed error
-	float l_errRigth;	// Right speed error
-	int l_cmd_left;	// Left  motor command value
+void F_Motion_PolarSpeedRegulator(int fwrdSpeed_mmPerSec,int rotSpeed_mmPerSec){
+	float l_fwrdSpeed;		// Linear speed from sensors
+	float l_rotSpeed;		// Rotation speed from sensors
+	float l_fwrdSpeedError;	// Linear speed computed error
+	float l_rotSpeedError;	// Rotation speed computed error
+
+	int l_cmd_left;		// Left  motor command value
 	int l_cmd_right;	// Right motor command value
 
 	// Données d'entée de régulateur
-	F_Odometry_getspeed(&l_leftSpeed, &l_rightSpeed);
+	F_Odometry_getPolarspeed(&l_fwrdSpeed,&l_rotSpeed);
 
 	// Calcul des erreurs
-	l_errLeft  = a_leftSpeed_mmPerSec  - l_leftSpeed;
-	l_errRigth = a_rightSpeed_mmPerSec - l_rightSpeed;
-
-//	g_errLeftSum  += l_errLeft ;
-//	g_errRightSum += l_errRigth;
+	l_fwrdSpeedError  = fwrdSpeed_mmPerSec  - l_fwrdSpeed;
+	l_rotSpeedError = rotSpeed_mmPerSec - l_rotSpeed;
 
 	// Calcul de la commande
-	l_cmd_left  = (l_errLeft  * KP_SPEED) ;//+ (g_errLeftSum  * KI_SPEED) ;
-	l_cmd_right = (l_errRigth * KP_SPEED) ;//+ (g_errRightSum * KI_SPEED) ;
+	l_cmd_left  = (l_fwrdSpeedError * KP_FWD_SPEED) - (l_rotSpeedError * KP_ROT_SPEED);
+	l_cmd_right = (l_fwrdSpeedError * KP_FWD_SPEED) + (l_rotSpeedError * KP_ROT_SPEED);
 
 	// Application de la commande
-	D_Motor_SetCmdMotorDroit(l_cmd_right);
 	D_Motor_SetCmdMotorGauche(l_cmd_left);
+	D_Motor_SetCmdMotorDroit(l_cmd_right);
 }
 /*
  * F_Motion_ManualPilot - Manual command
@@ -60,6 +58,8 @@ void F_Motion_ManualPilot(char a_consigne){
 		break;
 	case 'd':D_Motor_SetCmdMotorDroit(-speed);
 			 D_Motor_SetCmdMotorGauche(speed);
+		break;
+	case 'o'://F_Motion_PolarSpeedRegulator(0,0);
 		break;
 	case 'r':F_Odometry_Reset();
 		break;
