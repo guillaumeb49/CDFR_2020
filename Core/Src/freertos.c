@@ -32,6 +32,7 @@
 #include "usart.h"
 
 #include "A_com.h"
+#include "F_VL53L1X.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -220,13 +221,16 @@ void StartOdometryRegTask(void const * argument)
 void StartSensorsTask(void const * argument)
 {
   /* USER CODE BEGIN StartSensorsTask */
+	F_VL53L1X_InitSensors();
   /* Infinite loop */
   for(;;)
   {
-    osDelay(200);
+
     F_GPIO_SetLed3(TRUE);	// Flag ON
-    HAL_Delay(30);
+    F_VL53L1X_CheckSensors();
+
     F_GPIO_SetLed3(FALSE);
+    osDelay(300);
   }
   /* USER CODE END StartSensorsTask */
 }
@@ -241,7 +245,7 @@ void StartSensorsTask(void const * argument)
 void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
-	F_UART_DebugTask_Handler(argument);
+	//F_UART_DebugTask_Handler(argument);
 	//F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)

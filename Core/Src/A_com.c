@@ -194,7 +194,7 @@ uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 	s_cmd_answer->reponse[0] = (int32_t)0;	// Position X
 	s_cmd_answer->reponse[1] = (int32_t)0;	// Position Y
 	s_cmd_answer->reponse[2] = (int32_t)0;  // Position Theta
-	s_cmd_answer->reponse[3] = (int32_t)0;	// Capteur distance 1
+	s_cmd_answer->reponse[3] = (int32_t)F_GetDistanceSensor(1);	// Capteur distance 1
 	s_cmd_answer->reponse[4] = (int32_t)0;	// Capteur distance 2
 	s_cmd_answer->reponse[5] = (int32_t)0;	// Capteur distance 3
 	s_cmd_answer->reponse[6] = (int32_t)0;	// Capteur distance 4

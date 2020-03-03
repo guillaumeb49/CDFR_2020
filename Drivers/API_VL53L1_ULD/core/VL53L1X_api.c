@@ -227,6 +227,7 @@ VL53L1X_ERROR VL53L1X_SensorInit(VL53L1_Dev_t dev)
 		status = VL53L1_WrByte(&dev, Addr, VL51L1X_DEFAULT_CONFIGURATION[Addr - 0x2D]);
 	}
 	status = VL53L1X_StartRanging(dev);
+	VL53L1X_ClearInterrupt(dev);
 	while(tmp==0){
 			status = VL53L1X_CheckForDataReady(dev, &tmp);
 	}

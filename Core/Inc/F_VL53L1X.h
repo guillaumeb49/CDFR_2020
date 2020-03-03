@@ -15,5 +15,6 @@ extern uint16_t distance_arriere_1;
 
 void F_VL53L1X_InitSensors();
 void F_VL53L1X_CheckSensors();
+uint32_t F_GetDistanceSensor(uint8_t capteur_number);
 
 #endif
