@@ -2,6 +2,9 @@
 #define __F_VL53L1X_H
 
 #include "main.h"
+#include "i2c.h"
+#include "gpio.h"
+#include "cmsis_os.h"
 
 #define VL53L1X_AVANT_1_ADDR	0x10
 #define VL53L1X_AVANT_2_ADDR	0x12
@@ -16,5 +19,6 @@ extern uint16_t distance_arriere_1;
 void F_VL53L1X_InitSensors();
 void F_VL53L1X_CheckSensors();
 uint32_t F_GetDistanceSensor(uint8_t capteur_number);
+uint8_t F_VL53L1X_PerformReboot(VL53L1_Dev_t *sensor);
 
 #endif

@@ -55,7 +55,7 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h \
+ ../Core/Inc/F_VL53L1X.h ../Core/Inc/i2c.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
@@ -65,7 +65,7 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
  ../Core/Inc/F_Odometry.h ../Core/Inc/F_Motion.h ../Core/Inc/F_LCD.h \
- ../Core/Inc/i2c.h ../Core/Inc/usart.h ../Core/Inc/A_com.h \
+ ../Core/Inc/usart.h ../Core/Inc/A_com.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/opt.h \
  ../LWIP/Target/lwipopts.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
@@ -203,6 +203,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 
 ../Core/Inc/F_VL53L1X.h:
 
+../Core/Inc/i2c.h:
+
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
@@ -224,8 +226,6 @@ Core/Src/freertos.o: ../Core/Src/freertos.c \
 ../Core/Inc/F_Motion.h:
 
 ../Core/Inc/F_LCD.h:
-
-../Core/Inc/i2c.h:
 
 ../Core/Inc/usart.h:
 

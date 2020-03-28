@@ -281,52 +281,85 @@ int F_I2C2_ReadRegister(uint8_t slave_addr, uint8_t register_addr,uint8_t regist
 uint8_t F_I2C2_ReadRegisterVL53L1X(uint8_t slave_addr, uint16_t register_addr, uint8_t nb_value_to_read, uint8_t *value_read){
 	uint8_t i2c_status = 0;	// Init return value to error
 	uint8_t status = I2C_STATUS_OK;
-	int timeout=0;
+	uint32_t timeout=0;
 
 	uint8_t i = 0;
 
 	// Send start
 	I2C2->CR1 |= I2C_CR1_START; // send START bit
 	while (!(I2C2->SR1 & I2C_SR1_SB)){	// wait for START condition (SB=1)
-		/*if(timeout > I2C_TIMEOUT){
+		if(timeout > I2C_TIMEOUT){
 
-			return I2C_STATUS_KO;
-		}*/
-	timeout++;
+			return I2C_STATUS_TIMEOUT;
+		}
+		timeout++;
 	}
+
+	// Reset Timeout
+	timeout = 0;
+
 	// Send slave address
 	I2C2->DR = slave_addr & 0xFE  ;	// address + write
 	while (!(I2C2->SR1 & I2C_SR1_ADDR)){// wait for ADDRESS sent (ADDR=1)
-		/*if(timeout > I2C_TIMEOUT){
+		if(timeout > I2C_TIMEOUT){
 
-			return I2C_STATUS_KO;
-		}*/
+			return I2C_STATUS_TIMEOUT;
+		}
 		timeout++;
 	}
 
 	i2c_status = I2C2->SR2; // read status to clear flag
 
+	// Reset Timeout
+	timeout = 0;
+
 	// Send register address MSB
 	I2C2->DR = (uint8_t)((register_addr>>8) & 0x00FF);
-	while ((!(I2C2->SR1 & I2C_SR1_TXE)) && (!(I2C2->SR1 & I2C_SR1_BTF))); // wait for DR empty (TxE)
+	while ((!(I2C2->SR1 & I2C_SR1_TXE)) && (!(I2C2->SR1 & I2C_SR1_BTF))) // wait for DR empty (TxE)
+	{
+		if(timeout > I2C_TIMEOUT)
+		{
+			return I2C_STATUS_TIMEOUT;
+		}
+		timeout++;
+	}
+
+	// Reset Timeout
+		timeout = 0;
 
 	// Send register address LSB
 	I2C2->DR = (uint8_t)(register_addr & 0x00FF);
-	while ((!(I2C2->SR1 & I2C_SR1_TXE)) && (!(I2C2->SR1 & I2C_SR1_BTF))); // wait for DR empty (TxE)
-
+	while ((!(I2C2->SR1 & I2C_SR1_TXE)) && (!(I2C2->SR1 & I2C_SR1_BTF))) // wait for DR empty (TxE)
+	{
+		if(timeout > I2C_TIMEOUT)
+		{
+			return I2C_STATUS_TIMEOUT;
+		}
+		timeout++;
+		}
+	// Reset Timeout
+	timeout = 0;
 
 	// Send repeated start
 	I2C2->CR1 |= I2C_CR1_START; // send START bit
-	while (!(I2C2->SR1 & I2C_SR1_SB));	// wait for START condition (SB=1)
+	while (!(I2C2->SR1 & I2C_SR1_SB))	// wait for START condition (SB=1)
+	{
+		if(timeout > I2C_TIMEOUT)
+		{
+			return I2C_STATUS_TIMEOUT;
+		}
+		timeout++;
+	}
 
 	timeout=0;
 	// Send slave address
 	I2C2->DR = slave_addr | 1;	// address + read
-	while (!(I2C2->SR1 & I2C_SR1_ADDR)){ // wait for ADDRESS sent (ADDR=1)
-		/*if(timeout > I2C_TIMEOUT){
-
-			return I2C_STATUS_KO;
-		}*/
+	while (!(I2C2->SR1 & I2C_SR1_ADDR)) // wait for ADDRESS sent (ADDR=1)
+	{
+		if(timeout > I2C_TIMEOUT)
+		{
+			return I2C_STATUS_TIMEOUT;
+		}
 		timeout++;
 	}
 	i2c_status = I2C2->SR2; // read status to clear flag
@@ -345,9 +378,18 @@ uint8_t F_I2C2_ReadRegisterVL53L1X(uint8_t slave_addr, uint16_t register_addr, u
 			I2C2->CR1 &= ~I2C_CR1_ACK;
 		}
 
+		timeout=0;
+
 		// Wait for Data available
-			while (!(I2C2->SR1 & I2C_SR1_RXNE));
-			value_read[i] = I2C2->DR; 			// Address in chip -> DR & write
+		while (!(I2C2->SR1 & I2C_SR1_RXNE))
+		{
+			if(timeout > I2C_TIMEOUT)
+			{
+				return I2C_STATUS_TIMEOUT;
+			}
+			timeout++;
+		}
+		value_read[i] = I2C2->DR; 			// Address in chip -> DR & write
 	}
 
 

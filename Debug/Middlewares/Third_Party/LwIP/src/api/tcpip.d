@@ -49,17 +49,7 @@ Middlewares/Third_Party/LwIP/src/api/tcpip.o: \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/guillaume/STM32CubeIDE/workspace_1.1.0/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
- ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
- ../Middlewares/Third_Party/LwIP/system/arch/cpu.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
- ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
+ ../Core/Inc/F_VL53L1X.h ../Core/Inc/i2c.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -77,6 +67,16 @@ Middlewares/Third_Party/LwIP/src/api/tcpip.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/cc.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/cpu.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/netif.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
@@ -204,25 +204,7 @@ Middlewares/Third_Party/LwIP/src/api/tcpip.o: \
 
 ../Core/Inc/F_VL53L1X.h:
 
-../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/cc.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/cpu.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/err.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
+../Core/Inc/i2c.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
@@ -257,6 +239,26 @@ Middlewares/Third_Party/LwIP/src/api/tcpip.o: \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/debug.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h:
+
+../Middlewares/Third_Party/LwIP/system/arch/cc.h:
+
+../Middlewares/Third_Party/LwIP/system/arch/cpu.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/priv/tcpip_priv.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/err.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/timeouts.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
+
+../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/netif.h:
 

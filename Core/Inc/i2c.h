@@ -31,9 +31,10 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-#define I2C_TIMEOUT 	100000
+#define I2C_TIMEOUT 	10000
 #define I2C_STATUS_OK  	0
 #define I2C_STATUS_KO 	1
+#define I2C_STATUS_TIMEOUT 	2
 
 /* USER CODE END Private defines */
 

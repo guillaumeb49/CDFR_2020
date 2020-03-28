@@ -186,7 +186,6 @@ void F_Process_Command(struct tcp_command s_cmd_received, struct tcp_answer *s_c
 uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 {
 	uint8_t status = STATUS_OK;
-	uint8_t distance_warning = 0;
 
 
 	s_cmd_answer->code_retour = status;

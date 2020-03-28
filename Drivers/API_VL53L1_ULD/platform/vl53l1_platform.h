@@ -14,7 +14,11 @@ extern "C"
 #endif
 
 typedef struct {
+	uint8_t sensor_id;
 	uint32_t addr;
+	uint8_t connected;
+	uint16_t last_distance;
+
 } VL53L1_Dev_t;
 typedef VL53L1_Dev_t *VL53L1_DEV;
 

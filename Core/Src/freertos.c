@@ -166,9 +166,6 @@ void StartDefaultTask(void const * argument)
   {
 	//F_GPIO_ToogleLedRed();
     osDelay(500);
-    F_GPIO_SetLed5(TRUE);	// Flaf OFF
-    HAL_Delay(2);
-    F_GPIO_SetLed5(FALSE);	// Flaf OFF
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -225,11 +222,8 @@ void StartSensorsTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-
-    F_GPIO_SetLed3(TRUE);	// Flag ON
     F_VL53L1X_CheckSensors();
 
-    F_GPIO_SetLed3(FALSE);
     osDelay(300);
   }
   /* USER CODE END StartSensorsTask */
