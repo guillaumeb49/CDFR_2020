@@ -80,7 +80,8 @@ Core/Src/A_com.o: ../Core/Src/A_com.c ../Core/Inc/A_com.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+ ../Core/Inc/F_Odometry.h
 
 ../Core/Inc/A_com.h:
 
@@ -253,3 +254,5 @@ Core/Src/A_com.o: ../Core/Src/A_com.c ../Core/Inc/A_com.h \
 ../Middlewares/Third_Party/LwIP/src/include/lwip/ip6_addr.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
+
+../Core/Inc/F_Odometry.h:

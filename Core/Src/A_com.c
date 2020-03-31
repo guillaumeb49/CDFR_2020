@@ -101,7 +101,7 @@ void tcpecho_init(void)
  */
 void F_Process_Command(struct tcp_command s_cmd_received, struct tcp_answer *s_cmd_answer)
 {
-	uint8_t status = STATUS_OK;
+	//uint8_t status = STATUS_OK;
 
 	s_cmd_answer->id = s_cmd_received.id; 	// same ID as the received command
 	s_cmd_answer->cmd = s_cmd_received.cmd;	// recall the command executed
@@ -187,16 +187,19 @@ uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 {
 	uint8_t status = STATUS_OK;
 
+	int x,y,theta;
+
+	F_Odometry_getLocalisation(&x, &y, &theta);
 
 	s_cmd_answer->code_retour = status;
 	s_cmd_answer->nb_reponse = 9;
-	s_cmd_answer->reponse[0] = (int32_t)0;	// Position X
-	s_cmd_answer->reponse[1] = (int32_t)0;	// Position Y
-	s_cmd_answer->reponse[2] = (int32_t)0;  // Position Theta
-	s_cmd_answer->reponse[3] = (int32_t)F_GetDistanceSensor(1);	// Capteur distance 1
-	s_cmd_answer->reponse[4] = (int32_t)0;	// Capteur distance 2
-	s_cmd_answer->reponse[5] = (int32_t)0;	// Capteur distance 3
-	s_cmd_answer->reponse[6] = (int32_t)0;	// Capteur distance 4
+	s_cmd_answer->reponse[0] = (int32_t)x;	// Position X
+	s_cmd_answer->reponse[1] = (int32_t)y;	// Position Y
+	s_cmd_answer->reponse[2] = (int32_t)theta;  // Position Theta
+	s_cmd_answer->reponse[3] = (int32_t)F_GetDistanceSensor(0);	// Capteur distance 1
+	s_cmd_answer->reponse[4] = (int32_t)F_GetDistanceSensor(1);	// Capteur distance 2
+	s_cmd_answer->reponse[5] = (int32_t)F_GetDistanceSensor(2);	// Capteur distance 3
+	s_cmd_answer->reponse[6] = (int32_t)F_GetDistanceSensor(3);	// Capteur distance 4
 	s_cmd_answer->reponse[7] = (int32_t)0;	// Etat LED + Capteurs(Tout ou rien + tirette)
 	s_cmd_answer->reponse[8] = (int32_t)0;	// Etat servo
 

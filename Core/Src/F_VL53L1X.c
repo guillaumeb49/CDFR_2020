@@ -265,7 +265,25 @@ void F_VL53L1X_CheckSensors(void)
 
 uint32_t F_GetDistanceSensor(uint8_t capteur_number)
 {
-	return dev_avant_1.last_distance;
+	switch(capteur_number)
+	{
+		case 0:
+			return dev_avant_1.last_distance;
+			break;
+
+		case 1:
+			return dev_avant_2.last_distance;
+			break;
+		case 2:
+			return dev_avant_3.last_distance;
+			break;
+		case 3:
+			return dev_arriere_1.last_distance;
+			break;
+		default:
+			return dev_avant_1.last_distance;
+	}
+
 }
 
 
