@@ -148,7 +148,7 @@ void F_Process_Command(struct tcp_command s_cmd_received, struct tcp_answer *s_c
 
 			break;
 
-		// Get the list of points
+		// Get the tirette status
 			case CMD_GET_TIRETTE:
 
 			break;
