@@ -134,7 +134,7 @@ void MX_FREERTOS_Init(void) {
   SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
 
   /* definition and creation of DebugTask */
-  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 128);
+  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 256);
   DebugTaskHandle = osThreadCreate(osThread(DebugTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -164,7 +164,7 @@ void StartDefaultTask(void const * argument)
   for(;;)
   {
 	//F_GPIO_ToogleLedRed();
-    osDelay(500);
+    osDelay(50);
     F_GPIO_SetLed5(TRUE);	// Flaf OFF
     HAL_Delay(2);
     F_GPIO_SetLed5(FALSE);	// Flaf OFF
@@ -186,7 +186,7 @@ void StartMotionRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(100);
+    osDelay(1000);
   }
   /* USER CODE END StartMotionRegTask */
 }
@@ -205,7 +205,10 @@ void StartOdometryRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(10);
+    osDelay(1000);
+//	F_GPIO_SetLed1(TRUE);	// Flag On
+//	HAL_Delay(2);
+//    F_GPIO_SetLed1(FALSE);	// Flag Off
   }
   /* USER CODE END StartOdometryRegTask */
 }
@@ -223,9 +226,9 @@ void StartSensorsTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(200);
+    osDelay(100);
     F_GPIO_SetLed3(TRUE);	// Flag ON
-    HAL_Delay(30);
+    HAL_Delay(10);
     F_GPIO_SetLed3(FALSE);
   }
   /* USER CODE END StartSensorsTask */
@@ -246,7 +249,7 @@ void StartDebugTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(400);
+    osDelay(300);
   }
   /* USER CODE END StartDebugTask */
 }
