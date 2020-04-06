@@ -31,9 +31,10 @@
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN Private defines */
-#define I2C_TIMEOUT 	100000
-#define I2C_STATUS_OK  	1
-#define I2C_STATUS_KO 	0
+#define I2C_TIMEOUT 	10000
+#define I2C_STATUS_OK  	0
+#define I2C_STATUS_KO 	1
+#define I2C_STATUS_TIMEOUT 	2
 
 /* USER CODE END Private defines */
 
@@ -42,6 +43,11 @@ void MX_I2C2_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 int F_I2C1_WriteValue(uint8_t slave_addr, uint8_t value);
+
+int F_I2C2_ReadRegister(uint8_t slave_addr, uint8_t register_addr,uint8_t register_addr_2, uint8_t *value_read);
+uint8_t F_I2C2_WriteRegister(uint8_t slave_addr, uint16_t register_addr, uint8_t *value, uint8_t size);
+uint8_t F_I2C2_ReadRegisterVL53L1X(uint8_t slave_addr, uint16_t register_addr, uint8_t nb_value_to_read, uint8_t *value_read);
+
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus

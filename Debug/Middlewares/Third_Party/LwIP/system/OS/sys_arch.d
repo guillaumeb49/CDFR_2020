@@ -53,11 +53,7 @@ Middlewares/Third_Party/LwIP/system/OS/sys_arch.o: \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
- ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
+ ../Core/Inc/F_VL53L1X.h ../Core/Inc/i2c.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -75,6 +71,10 @@ Middlewares/Third_Party/LwIP/system/OS/sys_arch.o: \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/def.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h \
+ ../Middlewares/Third_Party/LwIP/src/include/lwip/err.h \
+ ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/mem.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/stats.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h \
@@ -193,13 +193,7 @@ Middlewares/Third_Party/LwIP/system/OS/sys_arch.o: \
 
 ../Core/Inc/F_VL53L1X.h:
 
-../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/err.h:
-
-../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
+../Core/Inc/i2c.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 
@@ -234,6 +228,14 @@ Middlewares/Third_Party/LwIP/system/OS/sys_arch.o: \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/def.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h:
+
+../Middlewares/Third_Party/LwIP/src/include/lwip/err.h:
+
+../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/mem.h:
 

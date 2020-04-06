@@ -15,6 +15,7 @@
 #include "lwip/api.h"
 
 #include "gpio.h"
+#include "F_Odometry.h"
 
 #define TCPECHO_THREAD_PRIO  ( tskIDLE_PRIORITY + 5 )
 

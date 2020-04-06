@@ -85,7 +85,7 @@ int8_t VL53L1_RdByte(VL53L1_DEV Dev, uint16_t index, uint8_t *data) {
 	uint8_t status = I2C_STATUS_OK;
 	status = F_I2C2_ReadRegisterVL53L1X(Dev->addr, index, 1, data);
 
-	return status; // to be implemented
+	return status;
 }
 
 int8_t VL53L1_RdWord(VL53L1_DEV Dev, uint16_t index, uint16_t *data) {

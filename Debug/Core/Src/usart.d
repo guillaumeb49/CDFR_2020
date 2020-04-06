@@ -46,7 +46,7 @@ Core/Src/usart.o: ../Core/Src/usart.c ../Core/Inc/usart.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h \
+ ../Core/Inc/F_VL53L1X.h ../Core/Inc/i2c.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
@@ -165,6 +165,8 @@ Core/Src/usart.o: ../Core/Src/usart.c ../Core/Inc/usart.h \
 /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h:
 
 ../Core/Inc/F_VL53L1X.h:
+
+../Core/Inc/i2c.h:
 
 ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h:
 

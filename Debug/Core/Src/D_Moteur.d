@@ -64,7 +64,7 @@ Core/Src/D_Moteur.o: ../Core/Src/D_Moteur.c ../Core/Inc/D_Moteur.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/core/VL53L1X_api.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_platform.h \
  /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h \
- ../Core/Inc/F_VL53L1X.h ../Core/Inc/gpio.h
+ ../Core/Inc/F_VL53L1X.h ../Core/Inc/i2c.h ../Core/Inc/gpio.h
 
 ../Core/Inc/D_Moteur.h:
 
@@ -201,5 +201,7 @@ Core/Src/D_Moteur.o: ../Core/Src/D_Moteur.c ../Core/Inc/D_Moteur.h \
 /home/mario/Documents/ARM_DEV/CDFR_2020/Drivers/API_VL53L1_ULD/platform/vl53l1_types.h:
 
 ../Core/Inc/F_VL53L1X.h:
+
+../Core/Inc/i2c.h:
 
 ../Core/Inc/gpio.h:
