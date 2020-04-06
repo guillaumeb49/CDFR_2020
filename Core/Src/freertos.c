@@ -135,7 +135,7 @@ void MX_FREERTOS_Init(void) {
   SensorsTaskHandle = osThreadCreate(osThread(SensorsTask), NULL);
 
   /* definition and creation of DebugTask */
-  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 128);
+  osThreadDef(DebugTask, StartDebugTask, osPriorityNormal, 0, 256);
   DebugTaskHandle = osThreadCreate(osThread(DebugTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
@@ -184,7 +184,7 @@ void StartMotionRegTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(100);
+    osDelay(1000);
   }
   /* USER CODE END StartMotionRegTask */
 }
@@ -239,12 +239,12 @@ void StartSensorsTask(void const * argument)
 void StartDebugTask(void const * argument)
 {
   /* USER CODE BEGIN StartDebugTask */
-	//F_UART_DebugTask_Handler(argument);
+	F_UART_DebugTask_Handler(argument);
 	//F_LCD_DebugTask_Handler(argument);
   /* Infinite loop */
   for(;;)
   {
-    osDelay(400);
+    osDelay(300);
   }
   /* USER CODE END StartDebugTask */
 }

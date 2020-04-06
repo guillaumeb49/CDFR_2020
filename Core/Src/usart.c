@@ -25,7 +25,7 @@
 #include <stdio.h>
 #include "F_Odometry.h"
 
-char g_uart_buff=':';
+uint8_t g_uart_buff=':';
 /* USER CODE END 0 */
 
 UART_HandleTypeDef huart4;
@@ -150,35 +150,33 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 } 
 
 /* USER CODE BEGIN 1 */
-void F_UART_Send(char * buff){
-	uint8_t ln=0 ;
+void F_UART_Send(char * buff, uint16_t length){
+	uint16_t l_cnt=0;
 
-	while(buff[ln]!='\0'){
-		ln++;
-	}
+	while((buff[l_cnt]!='\0') && (l_cnt<length)) l_cnt++;
 
-	HAL_UART_Transmit(&huart4, buff, ln, HAL_MAX_DELAY);
+	HAL_UART_Transmit(&huart4,buff, l_cnt, 100);
 }
-void F_UART_SetReceivedChar(char c){
+void F_UART_SetReceivedChar(uint32_t c){
 	g_uart_buff=c;
 }
-char F_UART_GetReceivedChar(void){
+uint8_t F_UART_GetReceivedChar(void){
 	return g_uart_buff;
 }
 void F_UART_DebugTask_Handler(void const * argument){
 
-	char tab[128];
-	sprintf(tab,"\n\rCarte Prop %s %s \n\r", __TIME__, __DATE__);
-	F_UART_Send(tab);
+	char tab[60];
+	sprintf(tab,"\n\rCarte Prop %s %s\n\r", __TIME__, __DATE__);
+	F_UART_Send(tab,60);
 
     while(1){
         // 2. Wait until period elapse
     	osDelay(200);
     	F_GPIO_SetLed4(TRUE);	// Flag ON
-
+    	HAL_Delay(2);
     	// 3. Send data
-    	F_Odometry_printPositionUART();
-    	//F_Odometry_printEstimatedSpeed();
+    	//F_Odometry_printPositionUART();
+    	F_Odometry_printEstimatedSpeed();
     	F_GPIO_SetLed4(FALSE);	// Flag OFF
     }
 }

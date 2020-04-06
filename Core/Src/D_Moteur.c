@@ -12,7 +12,7 @@
 #include "gpio.h"
 
 void Init_Motors(void){
-	F_GPIO_SetEnableMotors(1);
+	F_GPIO_SetEnableMotors(TRUE);
 
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_3);
 	HAL_TIM_PWM_Start(&htim4,TIM_CHANNEL_4);
@@ -24,7 +24,28 @@ void Init_Motors(void){
  * Pour faire l'automatique c'est obligatoire
  *
  */
-void D_Motor_SetCmdMotorDroit(int relativeDC){
+void D_Motor_SetCmdMotorDroit(int8_t relativeDC){
+	int8_t dir=0;
+	// Bornage de la donnée d'entrée
+	if(relativeDC<-100) relativeDC= -100;
+	if(relativeDC> 100) relativeDC=  100;
+
+	// Commande du pont en H
+	if(relativeDC < 0){
+		dir = -1;
+		relativeDC = ((float)relativeDC*CMD_MOT_OFF7_100) - CMD_MOT_OFF7 ;
+	}else{
+		dir = 1;
+		relativeDC = ((float)relativeDC*CMD_MOT_OFF7_100) + CMD_MOT_OFF7 ;
+	}
+
+	F_GPIO_SetMotorDroitDir(dir);
+	D_TIM4_CH4_SetDC(relativeDC*dir);
+}
+/**
+ *	@param[in] new_pwm_value new Duty cycle value in percentage %
+ */
+void D_Motor_SetCmdMotorGauche(int8_t relativeDC){
 	int dir=0;
 	// Bornage de la donnée d'entrée
 	if(relativeDC<-100) relativeDC= -100;
@@ -33,27 +54,12 @@ void D_Motor_SetCmdMotorDroit(int relativeDC){
 	// Commande du pont en H
 	if(relativeDC < 0){
 		dir = -1;
+		relativeDC = ((float)relativeDC*CMD_MOT_OFF7_100) - CMD_MOT_OFF7 ;
 	}else{
 		dir = 1;
+		relativeDC = ((float)relativeDC*CMD_MOT_OFF7_100) + CMD_MOT_OFF7 ;
 	}
-	F_GPIO_SetMotorDroitDir(dir);
-	D_TIM4_CH4_SetDC(relativeDC*dir);
-}
-/**
- *	@param[in] new_pwm_value new Duty cycle value in percentage %
- */
-void D_Motor_SetCmdMotorGauche(int relativeDC){
-	int dir=0;
-	// Bornage de la donnée d'entrée
-	if(relativeDC<-100) relativeDC= -100;
-	if(relativeDC> 100) relativeDC=  100;
 
-	// Commande du pont en H
-	if(relativeDC < 0){
-		(dir = -1);
-	}else{
-		(dir = 1);
-	}
 	F_GPIO_SetMotorGaucheDir(dir);
 	D_TIM4_CH3_SetDC(relativeDC*dir);
 }

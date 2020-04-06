@@ -225,7 +225,7 @@ void UART4_IRQHandler(void)
   /* USER CODE BEGIN UART4_IRQn 0 */
 	if(UART4->SR & USART_SR_RXNE){
 		UART4->SR &= ~USART_SR_RXNE;
-		F_UART_SetReceivedChar((char)UART4->DR);
+		F_UART_SetReceivedChar(UART4->DR);
 	}
   /* USER CODE END UART4_IRQn 0 */
   HAL_UART_IRQHandler(&huart4);

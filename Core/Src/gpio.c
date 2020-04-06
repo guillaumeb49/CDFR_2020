@@ -251,10 +251,10 @@ void F_GPIO_setLedGreen(uint8_t state)
 	}
 }
 
-void F_GPIO_PrintCode(int from0to31){
+void F_GPIO_PrintCode(uint8_t from0to31){
 	// TODO
 }
-void F_GPIO_SetLed1(int boul){
+void F_GPIO_SetLed1(uint8_t boul){
 	if(boul != TRUE){
 		LED_1_GPIO_Port->ODR &= ~LED_1_Pin;
 	}else{
@@ -268,7 +268,7 @@ void F_GPIO_ToogleLed1(void){
 		LED_1_GPIO_Port->ODR |= LED_1_Pin;
 	}
 }
-void F_GPIO_SetLed2(int boul){
+void F_GPIO_SetLed2(uint8_t boul){
 	if(boul != TRUE){
 		LED_4_GPIO_Port->ODR &= ~LED_4_Pin;
 	}else{
@@ -282,7 +282,7 @@ void F_GPIO_ToogleLed2(void){
 		LED_4_GPIO_Port->ODR |= LED_4_Pin;
 	}
 }
-void F_GPIO_SetLed3(int boul){
+void F_GPIO_SetLed3(uint8_t boul){
 	if(boul != TRUE){
 		LED_3_GPIO_Port->ODR &= ~LED_3_Pin;
 	}else{
@@ -296,7 +296,7 @@ void F_GPIO_ToogleLed3(void){
 		LED_3_GPIO_Port->ODR |= LED_3_Pin;
 	}
 }
-void F_GPIO_SetLed4(int boul){
+void F_GPIO_SetLed4(uint8_t boul){
 	if(boul != TRUE){
 		LED_5_GPIO_Port->ODR &= ~LED_5_Pin;
 	}else{
@@ -310,7 +310,7 @@ void F_GPIO_ToogleLed4(void){
 		LED_5_GPIO_Port->ODR |= LED_5_Pin;
 	}
 }
-void F_GPIO_SetLed5(int boul){
+void F_GPIO_SetLed5(uint8_t boul){
 	if(boul != TRUE){
 		LED_2_GPIO_Port->ODR &= ~LED_2_Pin;
 	}else{
@@ -324,19 +324,19 @@ void F_GPIO_ToogleLed5(void){
 		LED_2_GPIO_Port->ODR |= LED_2_Pin;
 	}
 }
-void F_GPIO_SetMotorDroitDir(int dir){
+void F_GPIO_SetMotorDroitDir(int8_t dir){
 	// PF 12
 	(dir<0) ? (M1_DIR_GPIO_Port->ODR |= M1_DIR_Pin) : (M1_DIR_GPIO_Port->ODR &= ~M1_DIR_Pin) ;
 }
 
-void F_GPIO_SetMotorGaucheDir(int dir){
+void F_GPIO_SetMotorGaucheDir(int8_t dir){
 	// PF 13
 	(dir<0) ? (M2_DIR_GPIO_Port->ODR |= M2_DIR_Pin) : (M1_DIR_GPIO_Port->ODR &= ~M2_DIR_Pin) ;
 }
 
-void F_GPIO_SetEnableMotors(int state){
+void F_GPIO_SetEnableMotors(uint8_t state){
 	// PF 14
-	(state) ? (ENABLE_MOTORS_GPIO_Port->ODR |= ENABLE_MOTORS_Pin) : (ENABLE_MOTORS_GPIO_Port->ODR &= ~ENABLE_MOTORS_Pin) ;
+	(state==TRUE) ? (ENABLE_MOTORS_GPIO_Port->ODR |= ENABLE_MOTORS_Pin) : (ENABLE_MOTORS_GPIO_Port->ODR &= ~ENABLE_MOTORS_Pin) ;
 }
 /* USER CODE END 2 */
 
