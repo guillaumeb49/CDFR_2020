@@ -148,16 +148,20 @@ void F_Process_Command(struct tcp_command s_cmd_received, struct tcp_answer *s_c
 
 			break;
 
-		// Get the list of points
-			case CMD_GET_TIRETTE:
+		// Get the tirette status
+		case CMD_GET_TIRETTE:
 
 			break;
 
 		// Get the list of points
-			case CMD_MOVE_SERVO:
+		case CMD_MOVE_SERVO:
 
 			break;
 
+		// Get the list of points
+		case CMD_MANUAL_CTRL:
+			F_Cmd_Manual_Control(s_cmd_received, s_cmd_answer);
+			break;
 
 		// Error, unknown command
 		default:
@@ -187,7 +191,7 @@ uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 {
 	uint8_t status = STATUS_OK;
 
-	int x,y,theta;
+	int32_t x,y,theta;
 
 	F_Odometry_getLocalisation(&x, &y, &theta);
 
@@ -200,7 +204,7 @@ uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 	s_cmd_answer->reponse[4] = (int32_t)F_GetDistanceSensor(1);	// Capteur distance 2
 	s_cmd_answer->reponse[5] = (int32_t)F_GetDistanceSensor(2);	// Capteur distance 3
 	s_cmd_answer->reponse[6] = (int32_t)F_GetDistanceSensor(3);	// Capteur distance 4
-	s_cmd_answer->reponse[7] = (int32_t)0;	// Etat LED + Capteurs(Tout ou rien + tirette)
+	s_cmd_answer->reponse[7] = (int32_t)F_GPIO_GetIOValues();	// Etat LED + Capteurs(Tout ou rien + tirette)
 	s_cmd_answer->reponse[8] = (int32_t)0;	// Etat servo
 
 	return status;
@@ -216,30 +220,48 @@ uint8_t F_Cmd_Set_LED(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 	if(((s_cmd_received.params[0]>>16)& 0x00FF) == 1)
 	{
 		F_GPIO_setLedRed(1);
+		F_UART_SetReceivedChar('z');
 	}
 	else if(((s_cmd_received.params[0]>>16)& 0x00FF) == 0)
 	{
 		F_GPIO_setLedRed(0);
+		if(F_UART_GetReceivedChar() == 'z')
+		{
+			F_UART_SetReceivedChar('a');
+		}
+
 	}
 
 	// BLUE LED
 	if(((s_cmd_received.params[0]>>8)& 0x00FF) == 1)
 	{
 		F_GPIO_setLedBlue(1);
+		F_UART_SetReceivedChar('s');
 	}
 	else if(((s_cmd_received.params[0]>>8)& 0x00FF) == 0)
 	{
 		F_GPIO_setLedBlue(0);
+		F_UART_SetReceivedChar('a');
+		if(F_UART_GetReceivedChar() == 's')
+		{
+			F_UART_SetReceivedChar('a');
+		}
 	}
 
 	// GREEN LED
 	if((s_cmd_received.params[0] & 0x00FF) == 1)
 	{
 		F_GPIO_setLedGreen(1);
+		F_UART_SetReceivedChar('q');
 	}
 	else if((s_cmd_received.params[0]& 0x00FF) == 0)
 	{
 		F_GPIO_setLedGreen(0);
+		F_UART_SetReceivedChar('a');
+		if(F_UART_GetReceivedChar() == 'q')
+		{
+			F_UART_SetReceivedChar('a');
+		}
 	}
 
 	s_cmd_answer->code_retour = status;
@@ -248,6 +270,62 @@ uint8_t F_Cmd_Set_LED(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
 	return status;
 
 }
+
+
+
+uint8_t F_Cmd_Manual_Control(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
+{
+	uint8_t status = STATUS_OK;
+
+	// STOP
+	if(s_cmd_received.params[0] == 0)
+	{
+		F_GPIO_setLedRed(0);
+		F_GPIO_setLedBlue(0);
+		F_GPIO_setLedGreen(0);
+		F_UART_SetReceivedChar('a');
+	}
+	// MOVE FORWARD
+	else if(s_cmd_received.params[0] == 1)
+	{
+		F_GPIO_setLedRed(1);
+		F_GPIO_setLedBlue(0);
+		F_GPIO_setLedGreen(0);
+		F_UART_SetReceivedChar('z');
+	}
+	// MOVE BACKWARD
+	else if(s_cmd_received.params[0] == 2)
+	{
+		F_GPIO_setLedRed(0);
+		F_GPIO_setLedBlue(1);
+		F_GPIO_setLedGreen(0);
+		F_UART_SetReceivedChar('s');
+	}
+	// MOVE LEFT
+	else if(s_cmd_received.params[0] == 3)
+	{
+		F_GPIO_setLedRed(0);
+		F_GPIO_setLedBlue(0);
+		F_GPIO_setLedGreen(1);
+		F_UART_SetReceivedChar('d');
+	}
+	// MOVE RIGHT
+	else if(s_cmd_received.params[0] == 4)
+	{
+		F_GPIO_setLedRed(0);
+		F_GPIO_setLedBlue(0);
+		F_GPIO_setLedGreen(1);
+		F_UART_SetReceivedChar('q');
+	}
+
+	s_cmd_answer->code_retour = status;
+	s_cmd_answer->nb_reponse = 0;
+
+	return status;
+
+}
+
+
 
 
 void F_TCP_paquetTocmd(void *data,uint16_t data_len, struct tcp_command *s_cmd_received)

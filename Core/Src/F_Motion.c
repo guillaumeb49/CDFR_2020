@@ -81,6 +81,7 @@ void F_Motion_SpeedRegulator(int16_t fwrdSpeed_mmPerSec,int16_t rotSpeed_degPerS
  */
 void F_Motion_ManualPilot(char state, PID *PID_Fwrd, PID *PID_Rot){
 	int speed = 10;
+
 	switch(state){
 	case 'z':D_Motor_SetCmdMotorDroit(speed);
 			 D_Motor_SetCmdMotorGauche(speed);
@@ -153,6 +154,7 @@ void F_Motion_RegTask_Handler(void const * argument){
 
     // 2. Get tick count
     prevTick = osKernelSysTick();
+
 
     while(1){
         // 2. Wait until period elapse

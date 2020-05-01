@@ -251,6 +251,34 @@ void F_GPIO_setLedGreen(uint8_t state)
 	}
 }
 
+uint32_t F_GPIO_GetIOValues(void)
+{
+	uint32_t result = 0;
+
+	uint8_t led_red 	= ((GPIOB->ODR & LED_RED)>>14) & 0x00000001;
+	uint8_t led_green 	= ((GPIOB->ODR & LED_GREEN)>>0) & 0x00000001;
+	uint8_t led_blue 	= ((GPIOB->ODR & LED_BLUE)>>7) & 0x00000001;
+	uint8_t led_1 		= ((GPIOB->ODR & LED_1_Pin)>>6) & 0x00000001;
+	uint8_t led_2 		= ((GPIOE->ODR & LED_2_Pin)>>10) & 0x00000001;
+	uint8_t led_3 		= ((GPIOA->ODR & LED_3_Pin)>>3) & 0x00000001;
+	uint8_t led_4 		= ((GPIOB->ODR & LED_4_Pin)>>10) & 0x00000001;
+	uint8_t led_5 		= ((GPIOD->ODR & LED_5_Pin)>>13) & 0x00000001;
+
+	uint8_t user_btn	= ((GPIOC->IDR & USER_Btn_Pin)>>13) & 0x00000001;
+	uint8_t tirette		= ((GPIOA->IDR & TIRETTE_Pin)>>5) & 0x00000001;
+	uint8_t contact_1		= ((GPIOD->IDR & CONTACT_1_Pin)>>4) & 0x00000001;
+	uint8_t contact_2		= ((GPIOD->IDR & CONTACT_2_Pin)>>5) & 0x00000001;
+	uint8_t contact_3		= ((GPIOD->IDR & CONTACT_3_Pin)>>7) & 0x00000001;
+	uint8_t contact_4		= ((GPIOG->IDR & CONTACT_4_Pin)>>0) & 0x00000001;
+	uint8_t contact_5		= ((GPIOD->IDR & CONTACT_5_Pin)>>0) & 0x00000001;
+	uint8_t contact_6		= ((GPIOE->IDR & CONTACT_6_Pin)>>1) & 0x00000001;
+
+
+	result = (contact_6 << 16) | (contact_5 << 15) | (contact_4 << 14) | (contact_3 << 13) | (contact_2 << 12) | (contact_1 << 11) | (tirette << 10)| (user_btn << 9)| (led_5 << 8)| (led_4 << 7) | (led_3 << 6) | (led_2 << 5) | (led_1 << 4) | (led_red << 3) | (led_green << 1) | led_blue;
+
+	return result;
+}
+
 void F_GPIO_PrintCode(uint8_t from0to31){
 	// TODO
 }
