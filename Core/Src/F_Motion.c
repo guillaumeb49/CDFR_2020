@@ -36,7 +36,7 @@ void F_Motion_PolarRegulator(int16_t angle_deg,PID *PID_Fwrd, PID*PID_Rot){
 	F_Motion_SpeedRegulator(0,l_rotSpeed,PID_Fwrd,PID_Rot);
 }
 /*
- * F_Motion_MotorSpeedRegulator - Manual command
+ * F_Motion_MotorSpeedRegulator
  */
 void F_Motion_SpeedRegulator(int16_t fwrdSpeed_mmPerSec,int16_t rotSpeed_degPerSec,PID *PID_Fwrd, PID*PID_Rot){
 	float l_fwrdSpeed;		// Linear speed from sensors
