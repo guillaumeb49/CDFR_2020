@@ -44,6 +44,8 @@ void F_GPIO_setLedRed(uint8_t state);
 void F_GPIO_setLedBlue(uint8_t state);
 void F_GPIO_setLedGreen(uint8_t state);
 
+uint32_t F_GPIO_GetIOValues(void);
+
 void F_GPIO_ToogleLedRed(void);
 void F_GPIO_PrintCode(uint8_t from0to31);
 void F_GPIO_SetLed1(uint8_t boul);

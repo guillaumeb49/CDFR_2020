@@ -160,6 +160,7 @@ void F_UART_Send(char * buff, uint16_t length){
 void F_UART_SetReceivedChar(uint32_t c){
 	g_uart_buff=c;
 }
+
 uint8_t F_UART_GetReceivedChar(void){
 	return g_uart_buff;
 }

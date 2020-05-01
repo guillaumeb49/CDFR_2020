@@ -16,6 +16,7 @@
 
 #include "gpio.h"
 #include "F_Odometry.h"
+#include "usart.h"
 
 #define TCPECHO_THREAD_PRIO  ( tskIDLE_PRIORITY + 5 )
 
@@ -34,6 +35,7 @@
 #define CMD_GET_TIRETTE     0x0B
 
 #define CMD_MOVE_SERVO     	0x0C
+#define CMD_MANUAL_CTRL    	0x0D
 
 #define STATUS_OK			0x00
 #define STATUS_UNKNOWN_CMD	0x01
@@ -69,6 +71,7 @@ void tcpecho_init(void);
 
 uint8_t F_Cmd_Info(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer);
 uint8_t F_Cmd_Set_LED(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer);
+uint8_t F_Cmd_Manual_Control(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer);
 
 void F_TCP_paquetTocmd(void *data,uint16_t data_len, struct tcp_command *s_cmd_received);
 void F_TCP_answerTotab(uint32_t *array, struct tcp_answer s_cmd_answer);
