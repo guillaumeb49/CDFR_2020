@@ -208,6 +208,8 @@ void Error_Handler(void);
 #define mainHOST_NAME				"STM32_Robot"
 #define mainDEVICE_NICK_NAME		"windows_STM32_Robot"
 
+#define STM32_UUID ((uint32_t *)0x1FFF7A10)
+
 #define TRUE 	0
 #define FALSE 	1
 /* USER CODE END Private defines */

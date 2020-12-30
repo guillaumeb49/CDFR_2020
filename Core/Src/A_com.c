@@ -163,6 +163,11 @@ void F_Process_Command(struct tcp_command s_cmd_received, struct tcp_answer *s_c
 			F_Cmd_Manual_Control(s_cmd_received, s_cmd_answer);
 			break;
 
+		// Get the UID of the STM32
+		case CMD_GET_UID:
+			F_Cmd_Get_UID(s_cmd_received, s_cmd_answer);
+			break;
+
 		// Error, unknown command
 		default:
 			break;
@@ -325,7 +330,24 @@ uint8_t F_Cmd_Manual_Control(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answe
 
 }
 
+uint8_t F_Cmd_Get_UID(Tcp_command s_cmd_received, Tcp_answer *s_cmd_answer)
+{
+	uint8_t status = STATUS_OK;
 
+    uint32_t idPart1 = STM32_UUID[0];
+    uint32_t idPart2 = STM32_UUID[1];
+    uint32_t idPart3 = STM32_UUID[2];
+
+	s_cmd_answer->code_retour = status;
+	s_cmd_answer->nb_reponse = 3;
+	s_cmd_answer->reponse[0] = idPart1;	// UID(31:0)
+	s_cmd_answer->reponse[1] = idPart2;	// UID(63:32)
+	s_cmd_answer->reponse[2] = idPart3; // UID(95:64)
+
+
+	return status;
+
+}
 
 
 void F_TCP_paquetTocmd(void *data,uint16_t data_len, struct tcp_command *s_cmd_received)
