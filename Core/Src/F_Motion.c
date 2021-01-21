@@ -38,7 +38,11 @@ void F_Motion_PolarRegulator(int16_t angle_deg,PID *PID_Fwrd, PID*PID_Rot){
 /*
  * F_Motion_MotorSpeedRegulator
  */
-void F_Motion_SpeedRegulator(int16_t fwrdSpeed_mmPerSec,int16_t rotSpeed_degPerSec,PID *PID_Fwrd, PID*PID_Rot){
+void F_Motion_SpeedRegulator(	int16_t fwrdSpeed_mmPerSec,
+							 	int16_t rotSpeed_degPerSec,
+								PID *PID_Fwrd,
+								PID*PID_Rot)
+{
 	float l_fwrdSpeed;		// Linear speed from sensors
 	float l_rotSpeed;		// Rotation speed from sensors
 	float l_fwrdSpeedError;	// Linear speed computed error
