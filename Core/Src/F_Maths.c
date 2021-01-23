@@ -33,15 +33,8 @@ int F_Math_Sign(float nb){
 /*
  * Return arg % pi
  */
-void F_Math_ModuloPi(float *angleRad){
-	*angleRad = 2 * atanf(tanf(*angleRad / 2));
-	/*
-	float angle=*angleRad;
-
-	if(angle >  PI) angle = -( PI_X2 - angle);
-	if(angle < -PI) angle =  ( PI_X2 + angle);
-
-	*angleRad=	angle;*/
+float F_Math_ModuloPi(float angleRad){
+	return 2 * atanf(tanf(angleRad / 2));
 }
 /*
  * Return absolute value
@@ -58,4 +51,11 @@ float F_Math_Abs(float nb){
  */
 float F_Math_Squared(float nb){
 	return nb*nb;
+}
+
+float F_Math_Distance(Position pointA, Position pointB ){
+
+	float distance = sqrtf(F_Math_Squared(pointA.x-pointB.x)+F_Math_Squared(pointA.y-pointB.y));
+
+	return distance;
 }

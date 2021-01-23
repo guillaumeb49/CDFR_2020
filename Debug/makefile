@@ -35,23 +35,12 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
-ifneq ($(strip $(S_DEPS)),)
--include $(S_DEPS)
-endif
-ifneq ($(strip $(S_UPPER_DEPS)),)
--include $(S_UPPER_DEPS)
-endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
 endif
 
 -include ../makefile.defs
-
-BUILD_ARTIFACT_NAME := CDFR_2020
-BUILD_ARTIFACT_EXTENSION := elf
-BUILD_ARTIFACT_PREFIX := 
-BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME).$(BUILD_ARTIFACT_EXTENSION)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
@@ -63,19 +52,13 @@ default.size.stdout \
 OBJDUMP_LIST += \
 CDFR_2020.list \
 
-OBJCOPY_BIN += \
-CDFR_2020.bin \
-
 
 # All Target
-all: main-build
-
-# Main-build Target
-main-build: CDFR_2020.elf secondary-outputs
+all: CDFR_2020.elf secondary-outputs
 
 # Tool invocations
-CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/guillaume/Documents/CDFR_2020/STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/guillaume/Documents/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CDFR_2020.elf: $(OBJS) $(USER_OBJS) /home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "CDFR_2020.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/home/mario/Documents/ARM_DEV/CDFR_2020/STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CDFR_2020.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -89,26 +72,14 @@ CDFR_2020.list: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-CDFR_2020.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "CDFR_2020.bin"
-	@echo 'Finished building: $@'
-	@echo ' '
-
 # Other Targets
 clean:
 	-$(RM) *
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
 
-fail-specified-linker-script-missing:
-	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
-	@exit 2
-
-warn-no-linker-script-specified:
-	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
-
-.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents
 .SECONDARY:
 
 -include ../makefile.targets

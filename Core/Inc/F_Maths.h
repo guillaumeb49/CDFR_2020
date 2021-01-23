@@ -15,12 +15,21 @@
 
 #include <math.h>
 
+struct position {
+	float x;
+	float y;
+	float teta;
+};
+typedef struct position Position;
+
 float F_Math_toRad(float angle_deg);
 float F_Math_toDeg(float angle_rad);
 int   F_Math_Sign(float nb);
-void  F_Math_ModuloPi(float *angleRad);
+float F_Math_ModuloPi(float angleRad);
 float F_Math_Abs(float nb);
 float F_Math_Squared(float nb);
+float F_Math_Distance(Position pointA, Position pointB );
+
 
 
 #endif /* INC_F_MATHS_H_ */

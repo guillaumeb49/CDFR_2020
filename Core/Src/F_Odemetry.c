@@ -7,11 +7,8 @@
 #include "F_Odometry.h"
 #include "usart.h"
 #include "F_LCD.h"
-#include "F_Maths.h"
 #include "tim.h"
 #include <stdio.h>
-
-#include "cmsis_os.h"
 
 int g_oldLeftCount;
 int g_oldRightCount;
@@ -69,11 +66,22 @@ void F_Odometry_Read(float *leftDelta, float * rightDelta){
 	if(l_leftDelta  < -4096) l_leftDelta = (l_leftCount + (65535  - g_oldLeftCount));
 	if(l_rightDelta < -4096) l_rightDelta= (l_rightCount + (65535 - g_oldRightCount));
 
-	*leftDelta  = l_leftDelta*WHEEL_C;
+	*leftDelta  = l_leftDelta * WHEEL_C;
 	*rightDelta = l_rightDelta;
 
 	g_oldLeftCount  = l_leftCount ;
 	g_oldRightCount = l_rightCount;
+}
+/*
+ * F_Odometry_getPosition - Return actual position
+ */
+Position F_Odometry_getPosition(void){
+	Position l_Pos;
+	l_Pos.x = g_RobotState.pos_tick.x*TICKTOMM;
+	l_Pos.y = g_RobotState.pos_tick.y*TICKTOMM;
+	l_Pos.teta = F_Math_toDeg(g_RobotState.pos_tick.teta);
+
+	return l_Pos;
 }
 /*
  * F_Odometry_getLocalisation - Return position
@@ -122,7 +130,7 @@ void F_Odometry_Compute(uint32_t period_ms){
 	g_RobotState.pos_tick.y +=  l_fwrdDeltick * sinf(g_RobotState.pos_tick.teta);
 	g_RobotState.pos_tick.teta +=  l_rotDelrad;
 
-	F_Math_ModuloPi(&g_RobotState.pos_tick.teta);
+	g_RobotState.pos_tick.teta = F_Math_ModuloPi(g_RobotState.pos_tick.teta);
 
 	if(period_ms !=0){
 		l_fwrdSpeedRaw = (l_fwrdDeltick*TICKTOMM)  * (1000.0 / period_ms);
@@ -163,7 +171,6 @@ void F_Odometry_printPositionUART(void){
 	char line1[60];
 	int16_t l_x=0,l_y,l_teta;
 	F_Odometry_getLocalisation(&l_x, &l_y, &l_teta);
-//	sprintf(line1,"Bonjour\n\r");//l_x);
 //	sprintf(line1,"X:%d\n\r",l_x);
 //	sprintf(line1,"X:%5d Y:%5d\n\r",l_x,l_y);
 	sprintf(line1,"X%5d Y%5d T:%4d C:%c\n\r",l_x,l_y,l_teta,F_UART_GetReceivedChar());

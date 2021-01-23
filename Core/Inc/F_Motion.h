@@ -12,7 +12,7 @@
 
 #include "cmsis_os.h"
 
-struct pid {
+struct s_pid {
 	float KP;
 	float KI;
 	float KD;
@@ -20,10 +20,11 @@ struct pid {
 	float ErVar;
 	float OldEr;
 };
-typedef struct pid PID;
+typedef struct s_pid PID;
 
-void F_Motion_PolarRegulator(int16_t angle_deg,PID* PID_Fwrd, PID* PID_Rot);
-void F_Motion_SpeedRegulator(int16_t fwrdSpeed_mmPerSec,int16_t rotSpeed_degPerSec, PID* PID_Fwrd, PID* PID_Rot);
+enum e_MotionPriority{DELAY,ORIENTATION,SPEEDSIGN};
+typedef enum e_MotionPriority e_MOTION_PRIORITY;
+
 void F_Motion_ManualPilot(char, PID* PID_Fwrd, PID* PID_Rot);
 void F_Motion_RegTask_Handler(void const * argument);
 

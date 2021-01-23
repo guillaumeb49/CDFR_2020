@@ -21,13 +21,8 @@
 #define ODO_TECH 	5			 		// Update period in millisecond
 
 #include "cmsis_os.h"
+#include "F_Maths.h"
 
-struct position {
-	float x;
-	float y;
-	float teta;
-};
-typedef struct position Position;
 
 struct robotState {
 	Position pos_tick;
@@ -49,10 +44,10 @@ void F_Odometry_Read(float *leftDelta, float * rightDelta);
 void F_Odometry_getWheelSpeed(float * leftSpeed_mmPerSec, float * rightSpeed_mmPerSec);
 void F_Odometry_getPolarspeed(float * fwrdSpeed_mmPerSec, float * rotSpeed_degPerSec);
 void F_Odometry_getLocalisation(int16_t * x_mm, int16_t * y_mm, int16_t *teta_deg);
+Position F_Odometry_getPosition(void);
 void F_Odometry_printEstimatedSpeed(void);
 void F_Odometry_printCountersUART(void);
 void F_Odometry_printPositionUART(void);
 void F_Odometry_printCountersLCD(void);
 void F_Odometry_printPositionLCD(void);
-
 #endif /* SRC_F_ODOMETRY_H_ */
